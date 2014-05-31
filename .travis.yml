@@ -49,6 +49,3 @@ before_script:
   # Read in platform specific env config
   - echo build/travis/$DB.env
   - source build/travis/$DB.env
-
-script:
-  - ./system/vendor/bin/phing integration-test
