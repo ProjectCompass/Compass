@@ -12,9 +12,9 @@ Content Manager Press as System
 * [Rodrigo Sousa](https://github.com/rodrigofrcs)
 
 ### Description
-Compass is an Open Sourse project, aiming to provide a manager discussed and highly customizable content. The Compass is composed of a central system, called core and five other additional modules, namely CMS Compass, Compass Books, Journal Compass, Compass and Compass Eventus Helpdesck.
+Compass is an Open Sourse project, aiming to provide a manager discussed and highly customizable content. The Compass is composed of a central system, called CORE and five other additional modules, namely CompassCMS, CompassBooks, CompassJournal, CompassEventus and CompassHelpdesck.
 
-The core of the Compass is built on the foundations of EllisLab-CodeIgniter and appearance based on ZURB-Foundation.
+The core of the Compass is built on the bases of EllisLab/CodeIgniter and appearance based on ZURB/Foundation.
 
 Any developer can collaborate adding something new to the system and spreading to other users, users with little or no knowledge can also use the Compass in managing their applications.
 
