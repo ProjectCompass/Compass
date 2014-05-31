@@ -30,3 +30,5 @@ Any developer can collaborate adding something new to the system and spreading t
 
 ### Contributions
 * [Translation](https://www.transifex.com/projects/p/ProjectCompass/)
+
+[![Build Status](https://travis-ci.org/ProjectCompass/compass.svg?branch=master)](https://travis-ci.org/ProjectCompass/compass)
