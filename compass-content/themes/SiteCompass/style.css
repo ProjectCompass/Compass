@@ -1,0 +1,38 @@
+/*Folha de estilos*/
+/*#91bd09*/
+body{width: 100%; margin:none; border: none;}
+header{background: #105069; min-height: 100px;}
+header h1{color: #f1f1f1; font-size: 2.5rem; font-weight: 100; margin-bottom: -5px;}
+header span{font-size: 16px; color: #f1f1f1;}
+a.social-network{font-size: 36px; color: #f1f1f1; float: right; margin: 5px !important;}
+a.social-network i{margin-top: 20px;}
+div#capa{background: #105069;}
+div#capa img{width: 100%;}
+
+article#content-home, article#content-home-posts{margin: 10px 0;}
+article#content h3{margin: 0px;}
+article#content span{font-weight: bold; font-size: 12px; margin: 0px; text-transform: uppercase;}
+article#content p{margin: 0px;}
+article#content div.post-box{margin: 10px 0px;}
+
+span.advertiser{background: #999; text-align: center; color: #f1f1f1; padding: 75px 0; border-radius: 5px;}
+
+footer{background: #222; color: #fff; padding: 15px 0px;}
+footer *{color: #aaa;}
+footer h4, footer h5, footer h6 {display: inline;}
+footer a:hover{color: #ddd;}
+footer p{font-size: 12px; margin: 0px;}
+footer i{margin: 0px !important;}
+
+h2.blog-title, h2.blog-title a {color: #000; font-size: 56px; text-align: center;}
+div.main-post{margin-bottom: 35px;}
+h2.post-title{text-align: center;}
+div.post-meta{text-align: center !important;}
+div.post-content{padding: 25px 0; border-top: 1px solid #ccc; margin-top: 25px;}
+div.post-content img{max-width: 100%; height: auto; margin:10px 0;}
+
+div.main-page{margin: 20px 0;}
+.page-title{font-weight: 100 !important;}
+div.page-sidebar h3{}
+
+.button-category{margin-right: 10px; margin-bottom: 10px;}
