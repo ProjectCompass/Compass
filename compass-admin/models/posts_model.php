@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Posts_model extends CI_Model {
@@ -31,8 +31,8 @@ class Posts_model extends CI_Model {
      * Used in controllers with forms of insertion of post data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_insert($data=NULL, $redir=TRUE){
         if ($data != NULL):
@@ -57,8 +57,8 @@ class Posts_model extends CI_Model {
      * Used in controllers with forms of updation of post data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_update($data=NULL, $condition=NULL, $redir=TRUE, $audit=TRUE){
         if ($data != NULL && is_array($condition)):
@@ -83,8 +83,8 @@ class Posts_model extends CI_Model {
      * Used in controllers with forms of delete of post data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_delete($condition=NULL, $redir=TRUE){
         if ($condition != NULL && is_array($condition)):
@@ -107,8 +107,8 @@ class Posts_model extends CI_Model {
      * Performs upload media.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_upload($field){
         $config['upload_path'] = './compass-content/uploads/medias/';
@@ -130,8 +130,8 @@ class Posts_model extends CI_Model {
      * Used in controllers with forms of updation of stat post data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_update_stat($data=NULL, $condition=NULL){
         if ($data != NULL && is_array($condition)):
@@ -147,8 +147,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post id past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_id($id=NULL){
         if ($id != NULL):
@@ -168,8 +168,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post type past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_type($post_type=NULL){
         if ($post_type != NULL):
@@ -188,8 +188,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post author past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_author($post_author=NULL){
         if ($post_author != NULL):
@@ -208,8 +208,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post status past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_status($status=NULL, $post_type=NULL){
         if ($status != NULL):
@@ -229,8 +229,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post visible past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_visible($visible=NULL, $post_type=NULL){
         if ($visible != NULL):
@@ -250,8 +250,8 @@ class Posts_model extends CI_Model {
      * Used to return the data from the post slug past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_slug($slug=NULL){
         if ($slug != NULL):
@@ -270,8 +270,8 @@ class Posts_model extends CI_Model {
      * Used to return a list of posts with various criteria of search filters.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function return_list($max_rows=NULL, $offset=NULL, $column=NULL, $order=NULL, $filter=NULL, $search=NULL){
         if ($search!=NULL && $filter=='filter_status'):
@@ -299,8 +299,8 @@ class Posts_model extends CI_Model {
      * Used to return a list of pages with various criteria of search filters.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function return_list_pages($max_rows=NULL, $offset=NULL, $column=NULL, $order=NULL, $filter, $search){
         if ($search!=NULL && $filter=='filter_status'):
@@ -326,8 +326,8 @@ class Posts_model extends CI_Model {
      * Used to return a list of medias with various criteria of search filters.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function return_list_medias($max_rows=NULL, $offset=NULL, $column=NULL, $order=NULL, $filter, $search){
         if($search!=NULL && $filter=='search'):
@@ -352,8 +352,8 @@ class Posts_model extends CI_Model {
      * Used to return all psts without criteria searches.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_all(){
         return $this->db->get('posts');

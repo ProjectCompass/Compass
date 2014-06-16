@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Comments_model extends CI_Model {
@@ -31,8 +31,8 @@ class Comments_model extends CI_Model {
      * Used in controllers with forms of insertion of comment data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_insert($data=NULL, $redir=TRUE){
         if ($data != NULL):
@@ -60,8 +60,8 @@ class Comments_model extends CI_Model {
      * Used in controllers with forms of updation of comment data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_update($data=NULL, $condition=NULL, $redir=TRUE){
         if ($data != NULL && is_array($condition)):
@@ -84,8 +84,8 @@ class Comments_model extends CI_Model {
      * Used in controllers with forms of delete of comment data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_delete($condition=NULL, $redir=TRUE){
         if ($condition != NULL && is_array($condition)):
@@ -108,8 +108,8 @@ class Comments_model extends CI_Model {
      * Used to return the data from the comment id past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_id($id=NULL){
         if ($id != NULL):
@@ -129,8 +129,8 @@ class Comments_model extends CI_Model {
      * Used to return the data from the comment postid past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_postid($postid=NULL){
         if ($postid != NULL):
@@ -153,8 +153,8 @@ class Comments_model extends CI_Model {
      * Used to return the data from the comment type past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_type($type=NULL, $order=NULL){
         if ($type != NULL):
@@ -178,8 +178,8 @@ class Comments_model extends CI_Model {
      * Used to return the data from the comment status past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_status($status=NULL){
         if ($status != NULL):
@@ -198,8 +198,8 @@ class Comments_model extends CI_Model {
      * Used to return a list of comments with various criteria of search filters.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function return_list($max_rows=NULL, $offset=NULL, $column=NULL, $order=NULL, $filter, $search){
         if ($search!=NULL && $filter=='filter_status'):
@@ -225,8 +225,8 @@ class Comments_model extends CI_Model {
      * Used to return all comments without criteria searches.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_all(){
         return $this->db->get('comments');

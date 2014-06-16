@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Userslevels_model extends CI_Model {
@@ -31,8 +31,8 @@ class Userslevels_model extends CI_Model {
      * Used in controllers with forms of insertion of usermeta data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_insert($data=NULL, $redir=TRUE){
         if ($data != NULL):
@@ -55,8 +55,8 @@ class Userslevels_model extends CI_Model {
      * Used in controllers with forms of updation of userlevel data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_update($data=NULL, $condition=NULL, $redir=TRUE){
         if ($data != NULL && is_array($condition)):
@@ -79,8 +79,8 @@ class Userslevels_model extends CI_Model {
      * Used in controllers with forms of delete of userlevel data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_delete($condition=NULL, $redir=TRUE){
         if ($condition != NULL && is_array($condition)):
@@ -103,8 +103,8 @@ class Userslevels_model extends CI_Model {
      * Used to return the data from the userslevels id past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_id($id=NULL){
         if ($id != NULL):
@@ -124,8 +124,8 @@ class Userslevels_model extends CI_Model {
      * Used to return the data from the userslevels name past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_name($name=NULL){
         if ($name != NULL):
@@ -145,8 +145,8 @@ class Userslevels_model extends CI_Model {
      * Used to return all userslevels without criteria searches.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_all(){
         $this->db->order_by('userlevel_level', 'asc');

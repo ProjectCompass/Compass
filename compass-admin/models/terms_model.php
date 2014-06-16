@@ -11,7 +11,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Terms_model extends CI_Model {
@@ -32,8 +32,8 @@ class Terms_model extends CI_Model {
      * Used in controllers with forms of insertion of terms data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_insert($data=NULL, $redir=TRUE){
         if ($data != NULL):
@@ -61,8 +61,8 @@ class Terms_model extends CI_Model {
      * Used in controllers with forms of updation of term data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_update($data=NULL, $condition=NULL, $redir=TRUE){
         if ($data != NULL && is_array($condition)):
@@ -85,8 +85,8 @@ class Terms_model extends CI_Model {
      * Used in controllers with forms of delete of user data.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function do_delete($condition=NULL, $redir=TRUE){
         if ($condition != NULL && is_array($condition)):
@@ -109,8 +109,8 @@ class Terms_model extends CI_Model {
      * Used to return the data from the terms id past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_id($id=NULL){
         if ($id != NULL):
@@ -130,8 +130,8 @@ class Terms_model extends CI_Model {
      * Used to return the data from the term slug past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_slug($slug=NULL){
         if ($slug != NULL):
@@ -151,8 +151,8 @@ class Terms_model extends CI_Model {
      * Used to return the data from the term type past.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_by_type($type=NULL, $order='term_order', $orderby='asc'){
         if ($type != NULL):
@@ -174,8 +174,8 @@ class Terms_model extends CI_Model {
      * Used to return a list of terms with various criteria of search filters.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function return_list($max_rows=NULL, $offset=NULL, $column=NULL, $order=NULL, $filter, $search){
         if($search!=NULL && $filter=='search'):
@@ -200,8 +200,8 @@ class Terms_model extends CI_Model {
      * Used to return all terms without criteria searches.
      *
      * @access     private
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function get_all(){
         return $this->db->get('terms');
