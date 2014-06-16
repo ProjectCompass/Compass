@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -215,7 +215,23 @@ if ( ! function_exists('img'))
 		foreach ($src as $k=>$v)
 		{
 
+			if ($k == 'src' AND strpos($v, '://') === FALSE)
+			{
+				$CI =& get_instance();
+
+				if ($index_page === TRUE)
+				{
+					$img .= ' src="'.$CI->config->site_url($v).'"';
+				}
+				else
+				{
+					$img .= ' src="'.$CI->config->slash_item('base_url').$v.'"';
+				}
+			}
+			else
+			{
 				$img .= " $k=\"$v\"";
+			}
 		}
 
 		$img .= '/>';
