@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 // ------------------------------------------------------------------------
@@ -23,8 +23,8 @@
  * @access  private
  * @param   no
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.1.0
  */
 function lang($key=NULL){
     $CI =& get_instance();
@@ -35,6 +35,7 @@ function lang($key=NULL){
     endif;
     $CI->lang->load('core', $language);
     $CI->lang->load('cms', $language);
+    $CI->lang->load('books', $language);
     if ($key != NULL):
         if ($CI->lang->line($key) != NULL):
             return $CI->lang->line($key);
@@ -56,8 +57,8 @@ function lang($key=NULL){
  * @access  private
  * @param   no
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function errors_validating(){
     if (validation_errors()):
@@ -75,8 +76,8 @@ function errors_validating(){
  * @access  private
  * @param   bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function be_logged($redir=TRUE){
     $CI =& get_instance();
@@ -105,8 +106,8 @@ function be_logged($redir=TRUE){
  * @access  private
  * @param   string string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_msg($id='msgerror', $msg=NULL, $type='error'){
     $CI =& get_instance();
@@ -133,8 +134,8 @@ function set_msg($id='msgerror', $msg=NULL, $type='error'){
  * @access  private
  * @param   string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_msg($id, $printar=TRUE){
     $CI =& get_instance();
@@ -159,8 +160,8 @@ function get_msg($id, $printar=TRUE){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_access($permission=NULL){
     $CI =& get_instance();
@@ -200,8 +201,8 @@ function get_access($permission=NULL){
  * @access  private
  * @param   string string bool string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
  function access($permission=NULL, $type=NULL, $return=FALSE, $level_url=NULL, $username_url=NULL){
     $CI =& get_instance();
@@ -289,8 +290,8 @@ function get_access($permission=NULL){
  * @access  private
  * @param   string integer integer bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function thumb($image=NULL, $width=100, $height=75, $geratag=TRUE){
     $CI =& get_instance();
@@ -329,8 +330,8 @@ function thumb($image=NULL, $width=100, $height=75, $geratag=TRUE){
  * @access  private
  * @param   string integer integer bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function avatar($image=NULL, $width=100, $height=75, $geratag=TRUE){
     $CI =& get_instance();
@@ -375,8 +376,8 @@ function avatar($image=NULL, $width=100, $height=75, $geratag=TRUE){
  * @access  private
  * @param   string string
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_setting($key, $value=NULL){
     $CI =& get_instance();
@@ -410,8 +411,8 @@ function set_setting($key, $value=NULL){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_setting($key){
     $CI =& get_instance();
@@ -435,8 +436,8 @@ function get_setting($key){
  * @access  private
  * @param   string string string
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_usermeta($key, $value=NULL, $iduser=NULL){
     $CI =& get_instance();
@@ -471,8 +472,8 @@ function set_usermeta($key, $value=NULL, $iduser=NULL){
  * @access  private
  * @param   string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_usermeta($key, $userid=NULL){
     $CI =& get_instance();
@@ -496,8 +497,8 @@ function get_usermeta($key, $userid=NULL){
  * @access  private
  * @param   string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_termmeta($key, $termid=NULL){
     $CI =& get_instance();
@@ -521,8 +522,8 @@ function get_termmeta($key, $termid=NULL){
  * @access  private
  * @param   string string string
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_postmeta($key, $value=NULL, $idpost=NULL){
     $CI =& get_instance();
@@ -557,8 +558,8 @@ function set_postmeta($key, $value=NULL, $idpost=NULL){
  * @access  private
  * @param   string string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_postmeta($key, $postid=NULL, $value=NULL){
     $CI =& get_instance();
@@ -586,8 +587,8 @@ function get_postmeta($key, $postid=NULL, $value=NULL){
  * @access  private
  * @param   string string bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_permission($value=NULL, $level=NULL, $isativelevel=FALSE){
     $CI =& get_instance();
@@ -618,8 +619,8 @@ function get_permission($value=NULL, $level=NULL, $isativelevel=FALSE){
  * @access  private
  * @param   string string string bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function audit($process=NULL, $description=NULL, $type=NULL, $query=TRUE){
     $CI =& get_instance();
@@ -654,8 +655,8 @@ function audit($process=NULL, $description=NULL, $type=NULL, $query=TRUE){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_session($session=NULL){
     $CI =& get_instance();
@@ -673,8 +674,8 @@ function set_session($session=NULL){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_session($session=NULL){
     $CI =& get_instance();
@@ -688,13 +689,13 @@ function get_session($session=NULL){
  /**
  * Get GMT to Local Date
  *
- * Converts a date/time for data server.
+ * Converts the data saved on the server for gtm date (set by the user) - view.
  * 
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_gmt_to_local_date($date=NULL){
     $CI =& get_instance();
@@ -733,8 +734,8 @@ function get_gmt_to_local_date($date=NULL){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
  function local_to_gmt_pers($time = NULL, $timezone = 'UTC', $dst = FALSE){
     $CI =& get_instance();
@@ -754,13 +755,13 @@ function get_gmt_to_local_date($date=NULL){
  /**
  * Get Local to GMT date
  *
- * Returns a date place (without gmt) last format in gmt.
+ * Converts date last user to date compatible with the server - controller.
  * 
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_local_to_gmt_date($date){
     $CI =& get_instance();
@@ -791,8 +792,8 @@ function get_local_to_gmt_date($date){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_stat($postid=''){
     $CI =& get_instance();
@@ -834,8 +835,8 @@ function set_stat($postid=''){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function excerpt($string, $chars) {
     if (strlen($string) > $chars):

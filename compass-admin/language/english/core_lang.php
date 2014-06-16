@@ -80,6 +80,11 @@ $lang['core_day_sunday']                   = 'Sun';
 $lang['core_colors_pallet']                = 'Thematic colors, Basic colors, More colors, Main colors, Palette, History.';
 $lang['core_compass_url']                  = 'https://github.com/ProjectCompass/';
 $lang['core_confirm_delete']               = 'Really delete this record?\nThis operation can not be undone!';
+$lang['core_menu']                         = 'Menu';
+$lang['core_books']                        = 'Books';
+$lang['core_books_catalog']                = 'Catalog';
+$lang['core_books_loans']                  = 'Loans';
+$lang['core_books_settings']               = 'Books settings';
 //Login
 $lang['login']                             = 'Login';
 $lang['login_field_pass']                  = 'Password';

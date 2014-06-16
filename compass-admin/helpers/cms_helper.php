@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 // ------------------------------------------------------------------------
@@ -25,8 +25,8 @@
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_title($title_page=FALSE){
 	$CI =& get_instance();
@@ -55,8 +55,8 @@ function info_title($title_page=FALSE){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_description(){
 	$CI =& get_instance();
@@ -77,8 +77,8 @@ function info_description(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_email_admin(){
 	$CI =& get_instance();
@@ -95,8 +95,8 @@ function info_email_admin(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_base_url(){
 	$CI =& get_instance();
@@ -114,8 +114,8 @@ function info_base_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_logo_url(){
 	$CI =& get_instance();
@@ -132,8 +132,8 @@ function info_logo_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_capa_url(){
 	$CI =& get_instance();
@@ -150,8 +150,8 @@ function info_capa_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_stylesheet_url(){
 	$CI =& get_instance();
@@ -169,8 +169,8 @@ function info_stylesheet_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_jquery_url(){
 	$CI =& get_instance();
@@ -188,8 +188,8 @@ function info_jquery_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_foundation_url(){
 	$CI =& get_instance();
@@ -207,8 +207,8 @@ function info_foundation_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_foundation_javascript_url(){
 	$CI =& get_instance();
@@ -226,8 +226,8 @@ function info_foundation_javascript_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_font_awesome_url(){
 	$CI =& get_instance();
@@ -245,8 +245,8 @@ function info_font_awesome_url(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_theme_url($echo=TRUE){
 	$CI =& get_instance();
@@ -264,8 +264,8 @@ function info_theme_url($echo=TRUE){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function info_theme_name(){
 	$CI =& get_instance();
@@ -284,8 +284,8 @@ function info_theme_name(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_header(){
 	$CI =& get_instance();
@@ -309,8 +309,8 @@ function get_header(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_sidebar(){
 	$CI =& get_instance();
@@ -333,8 +333,8 @@ function get_sidebar(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_footer(){
 	$CI =& get_instance();
@@ -357,8 +357,8 @@ function get_footer(){
  * @access  public
  * @param   no
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_functions(){
 	$CI =& get_instance();
@@ -381,8 +381,8 @@ function get_functions(){
  * @access  public
  * @param   string
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_include($file=NULL){
 	$CI =& get_instance();
@@ -405,8 +405,8 @@ function get_include($file=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_menu($config=NULL, $num_max=25){
 	$CI =& get_instance();
@@ -443,8 +443,8 @@ function get_menu($config=NULL, $num_max=25){
  * @access  public
  * @param   array string
  * @return  array
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function query_posts($config=array(), $post_type='post'){
 	$CI =& get_instance();
@@ -526,8 +526,8 @@ function query_posts($config=array(), $post_type='post'){
  * @access  public
  * @param   array string
  * @return  array
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function pagination($config=NULL, $post_type='post'){
 	$CI =& get_instance();
@@ -629,8 +629,8 @@ function pagination($config=NULL, $post_type='post'){
  * @access  public
  * @param   bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
  function the_header($css=TRUE){
 	$CI =& get_instance();
@@ -743,8 +743,8 @@ function pagination($config=NULL, $post_type='post'){
  * @access  public
  * @param   bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_id($query=NULL){
 	$CI =& get_instance();
@@ -767,8 +767,8 @@ function the_id($query=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_slug($query=NULL){
 	$CI =& get_instance();
@@ -791,8 +791,8 @@ function the_slug($query=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_permalink($query=NULL){
 	$CI =& get_instance();
@@ -820,8 +820,8 @@ function the_permalink($query=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_title($query=NULL){
 	$CI =& get_instance();
@@ -844,8 +844,8 @@ function the_title($query=NULL){
  * @access  public
  * @param   array bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_author($query=NULL, $islink=FALSE){
 	$CI =& get_instance();
@@ -881,8 +881,8 @@ function the_author($query=NULL, $islink=FALSE){
  * @access  public
  * @param   array bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_author_image($query=NULL, $isimg=FALSE){
 	$CI =& get_instance();
@@ -910,8 +910,8 @@ function the_author_image($query=NULL, $isimg=FALSE){
  * @access  public
  * @param   array bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_date($query=NULL, $format=NULL){
 	$CI =& get_instance();
@@ -950,8 +950,8 @@ function the_date($query=NULL, $format=NULL){
  * @access  public
  * @param   array bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_time($query=NULL, $format=NULL){
 	$CI =& get_instance();
@@ -990,8 +990,8 @@ function the_time($query=NULL, $format=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_content($query=NULL){
 	$CI =& get_instance();
@@ -1021,8 +1021,8 @@ function the_content($query=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_content_home(){
 	echo get_setting('layout_site_home_content');
@@ -1038,8 +1038,8 @@ function the_content_home(){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_excerpt($query=NULL, $chars=NULL){
 	$CI =& get_instance();
@@ -1074,8 +1074,8 @@ function the_excerpt($query=NULL, $chars=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_comments_count($query=NULL){
 	$CI =& get_instance();
@@ -1098,8 +1098,8 @@ function the_comments_count($query=NULL){
  * @access  public
  * @param   array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_views($query=NULL){
 	$CI =& get_instance();
@@ -1122,8 +1122,8 @@ function the_views($query=NULL){
  * @access  public
  * @param   array string bool
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_category($query=NULL, $separator=', ', $islink=FALSE){
 	$CI =& get_instance();
@@ -1175,8 +1175,8 @@ function the_category($query=NULL, $separator=', ', $islink=FALSE){
  * @access  public
  * @param   array bool integer integer
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_screenshot($query=NULL, $isimg=FALSE, $width=300, $height=300){
 	$CI =& get_instance();
@@ -1206,8 +1206,8 @@ function the_screenshot($query=NULL, $isimg=FALSE, $width=300, $height=300){
  * @access  public
  * @param   string array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_comments($title='Comments', $config=array()){
 	$CI =& get_instance();
@@ -1251,8 +1251,8 @@ function the_comments($title='Comments', $config=array()){
  * @access  public
  * @param   string string
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_comment_form($title='Write your own review', $attributes=NULL){
 	$CI =& get_instance();
@@ -1303,8 +1303,8 @@ function the_comment_form($title='Write your own review', $attributes=NULL){
  * @access  public
  * @param   string
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_network_url($network=NULL){
 	$CI =& get_instance();
@@ -1330,8 +1330,8 @@ function get_network_url($network=NULL){
  * @access  public
  * @param   integer integer array
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_recent_posts($limit=5, $offset=0, $attributes=NULL){
 	$CI =& get_instance();
@@ -1358,8 +1358,8 @@ function the_recent_posts($limit=5, $offset=0, $attributes=NULL){
  * @access  public
  * @param   string
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_tags($attributes=NULL){
 	$CI =& get_instance();
@@ -1387,8 +1387,8 @@ function the_tags($attributes=NULL){
  * @access  public
  * @param   string
  * @return  ECHO
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function the_search_form($attributes=NULL){
 	$CI =& get_instance();

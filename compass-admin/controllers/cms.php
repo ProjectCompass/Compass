@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Cms extends CI_Controller {
@@ -49,8 +49,8 @@ class Cms extends CI_Controller {
 	 * Allows loads the posts method for listing and managing posts.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		$this->posts();
@@ -63,8 +63,8 @@ class Cms extends CI_Controller {
 	 * Allows redirect to site.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function site(){
 		redirect('site');
@@ -79,8 +79,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing posts.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function posts(){
 		if ($this->uri->segment(3) == 'insert'):
@@ -233,8 +233,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing pages.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function pages(){
 		if ($this->uri->segment(3) == 'insert'):
@@ -352,8 +352,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing comments of posts.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function comments(){
 		//access permission
@@ -421,8 +421,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing medias of cms.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function medias(){
 		//access permission
@@ -513,8 +513,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and insert medias of tinymce box.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function insertmediasmodal(){
 		//insert the json in the html page header
@@ -550,8 +550,8 @@ class Cms extends CI_Controller {
 	 * Allows the upload medias.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function uploadmediasmodal(){
 		//saves the media for the db
@@ -592,8 +592,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing themes of site.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function themes(){
 		//access permission
@@ -659,8 +659,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing stats of site.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function stats(){
 		//access permission
@@ -685,8 +685,8 @@ class Cms extends CI_Controller {
 	 * Allows the listing and managing settings of cms.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function settings(){
 		//access permission

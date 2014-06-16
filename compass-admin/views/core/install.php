@@ -159,7 +159,7 @@ switch ($screen) {
                             echo '</div>';
                             echo '<div class="small-4 medium-3 large-2 columns center end">';
                                 echo form_label('<div class="co-icon-m-books"></div> <br> Books © Content Manager Press as System', 'module_books');
-                                echo form_checkbox(array('name'=>'module_books', 'id'=>'module_books', 'disabled'=>'disabled'), '1', FALSE);
+                                echo form_checkbox(array('name'=>'module_books', 'id'=>'module_books'), '1', FALSE);
                             echo '</div>';
                             echo '<div class="small-4 medium-3 large-2 columns center end">';
                                 echo form_label('<div class="co-icon-m-journal"></div> <br> Journal © Content Manager Press as System', 'module_journal');

@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Stop extends CI_Controller {
@@ -37,8 +37,8 @@ class Stop extends CI_Controller {
 	 * Allows approved users without access to certain elements of the system.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//mount the page layout

@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Users extends CI_Controller {
@@ -47,8 +47,8 @@ class Users extends CI_Controller {
 	 * their ordering, performing simple research, applying filters and pagination of results.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//access permission
@@ -92,8 +92,8 @@ class Users extends CI_Controller {
 	 * their ordering, performing simple research, applying filters and pagination of results.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function lists(){
 		//doubles the method index
@@ -109,8 +109,8 @@ class Users extends CI_Controller {
 	 * Lets you view information of users registered in the system.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function profile(){
 		//access permission
@@ -131,8 +131,8 @@ class Users extends CI_Controller {
 	 * Allows you to enter the information needed to register a new user.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function insert(){
 		//access permission
@@ -194,8 +194,8 @@ class Users extends CI_Controller {
 	 * Allows you to change the registration information of a user.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function update(){
 		//access permission
@@ -287,8 +287,8 @@ class Users extends CI_Controller {
 	 * Allows user deletes, assigns the status '9'to the user, leaving it invisible to the system.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function delete(){
 		//access permission
@@ -325,8 +325,8 @@ class Users extends CI_Controller {
 	 * Allows users to configure the module.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function settings(){
 		//access permission
@@ -467,8 +467,8 @@ class Users extends CI_Controller {
 	 * Allows you to configure the permissions for groups of users in the system.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function permissions(){
 		//access permission
@@ -508,11 +508,13 @@ class Users extends CI_Controller {
 				'perm_settings_',
 				'perm_tools_',
 				'perm_germedia_',
-				'perm_viewbook_',
-				'perm_gerbook_',
-				'perm_updatebook_',
-				'perm_deletebook_',
-				'perm_gerloans_'
+				'perm_bookslist_',
+				'perm_booksview_',
+				'perm_booksinsert_',
+				'perm_booksupdate_',
+				'perm_booksdelete_',
+				'perm_booksloansgerencie_',
+				'perm_bookssettings_'
 				);
 			//crossing rows and columns to get all the data from the table permissions
 			foreach ($allpermissions as $column):

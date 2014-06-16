@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Install extends CI_Controller {
@@ -43,8 +43,8 @@ class Install extends CI_Controller {
 	 * Page home install system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//resets settings
@@ -75,7 +75,7 @@ $config["log_threshold"] = 0;
 $config["log_path"] = "";
 $config["log_date_format"] = "Y-m-d H:i:s";
 $config["cache_path"] = "";
-$config["encryption_key"] = "";
+$config["encryption_key"] = "'.md5(time()).'";
 $config["sess_cookie_name"]		= "compass_session";
 $config["sess_expiration"]		= 7200;
 $config["sess_expire_on_close"]	= TRUE;
@@ -141,8 +141,8 @@ $db["default"]["stricton"] = FALSE;
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function second(){
 		//passes to the next screen
@@ -164,8 +164,8 @@ $db["default"]["stricton"] = FALSE;
 	 * Page for database settings for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function third(){
 		//passes to the next screen
@@ -263,6 +263,43 @@ $db["default"]["stricton"] = FALSE;
 			  `audit_description` text CHARACTER SET utf8 NOT NULL,
 			  `audit_query` text CHARACTER SET utf8 NOT NULL,
 			  PRIMARY KEY (`audit_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+			$this->db->query($sql_bd);
+			//create table books
+			$sql_bd = "CREATE TABLE IF NOT EXISTS `books` (
+			  `book_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+			  `book_register` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_title` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_author` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_tags` text CHARACTER SET utf8 NOT NULL,
+			  `book_keywords` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_language` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_edition` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_publisher` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_year_publisher` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_city_publisher` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_number_pages` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_isbn` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_cdd` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_cdu` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_synopsis` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_locale` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_date` datetime NOT NULL,
+			  `book_price` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  `book_cover` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  PRIMARY KEY (`book_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+			$this->db->query($sql_bd);
+			//create table loans
+			$sql_bd = "CREATE TABLE IF NOT EXISTS `loans` (
+			  `loan_id` bigint(20) NOT NULL AUTO_INCREMENT,
+			  `loan_lender_id` bigint(20) NOT NULL,
+			  `loan_user_id` bigint(20) NOT NULL,
+			  `loan_book_id` bigint(20) NOT NULL,
+			  `loan_date` datetime NOT NULL,
+			  `loan_date_deliver` datetime NOT NULL,
+			  `loan_status` varchar(255) CHARACTER SET utf8 NOT NULL,
+			  PRIMARY KEY (`loan_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
 			$this->db->query($sql_bd);
 			//create table comments
@@ -415,8 +452,8 @@ $db["default"]["stricton"] = FALSE;
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function fourth(){
 		//passes to the next screen
@@ -438,8 +475,8 @@ $db["default"]["stricton"] = FALSE;
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function fifth(){
 		//passes to the next screen
@@ -574,8 +611,7 @@ $db["default"]["stricton"] = FALSE;
 				(89, 'perm_themes_1', '1'),
 				(90, 'perm_stats_1', '1'),
 				(91, 'perm_stats_2', '1'),
-				(92, 'perm_stats_3', '1'),
-				(93, 'perm_contentssettings_1', '1');";
+				(92, 'perm_stats_3', '1');";
 			$this->db->query($sql_bd);
 			//additional settings
 			$sql_bd = "INSERT INTO `settings` (`setting_id`, `setting_name`, `setting_value`) VALUES
@@ -584,6 +620,34 @@ $db["default"]["stricton"] = FALSE;
 				(96, 'general_language', '".$this->uri->segment(3)."'),
 				(97, 'content_site_theme', 'SiteCompass'),
 				(98, 'site_blog_num_posts', '10');";
+			$this->db->query($sql_bd);
+			//enter settings for user permissions books
+			$sql_bd = "INSERT INTO `settings` (`setting_id`, `setting_name`, `setting_value`) VALUES
+				(99, 'perm_bookslist_1', '1'),
+				(100, 'perm_bookslist_2', '1'),
+				(101, 'perm_bookslist_3', '1'),
+				(102, 'perm_bookslist_4', '1'),
+				(103, 'perm_bookslist_5', '1'),
+				(104, 'perm_booksview_1', '1'),
+				(105, 'perm_booksview_2', '1'),
+				(106, 'perm_booksview_3', '1'),
+				(107, 'perm_booksview_4', '1'),
+				(108, 'perm_booksview_5', '1'),
+				(109, 'perm_booksinsert_1', '1'),
+				(110, 'perm_booksinsert_2', '1'),
+				(111, 'perm_booksinsert_3', '1'),
+				(112, 'perm_booksupdate_1', '1'),
+				(113, 'perm_booksupdate_2', '1'),
+				(114, 'perm_booksupdate_3', '1'),
+				(115, 'perm_booksdelete_1', '1'),
+				(116, 'perm_booksdelete_2', '1'),
+				(117, 'perm_booksloansgerencie_1', '1'),
+				(118, 'perm_booksloansgerencie_2', '1'),
+				(119, 'perm_booksloansgerencie_3', '1'),
+				(120, 'perm_bookssettings_1', '1'),
+				(121, 'books_loans_number_days', '5'),
+				(122, 'books_loans_max_for_user', '2'),
+				(123, 'books_reference_model', '[author], <strong>[title]</strong>. [edition]. ed. [city]: [publisher], [pages] p.');";
 			$this->db->query($sql_bd);
 			//rewrite the install.php controller
 			$file_controller = '
@@ -602,7 +666,7 @@ $db["default"]["stricton"] = FALSE;
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Install extends CI_Controller {
@@ -626,8 +690,8 @@ class Install extends CI_Controller {
 	 * Page home install system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		redirect(base_url("stop"));
@@ -641,8 +705,8 @@ class Install extends CI_Controller {
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function sixth(){
 		//mount the page layout
@@ -681,8 +745,8 @@ $route["404_override"] = "stop";
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function sixth(){
 		//mount the page layout
@@ -700,8 +764,8 @@ $route["404_override"] = "stop";
 	 * Page for preconditions for installing the system
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function readme(){
 		//mount the page layout

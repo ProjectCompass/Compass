@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Tools extends CI_Controller {
@@ -46,8 +46,8 @@ class Tools extends CI_Controller {
 	 * Used to provide access to system tools.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		$this->audits();
@@ -62,8 +62,8 @@ class Tools extends CI_Controller {
 	 * Enables tracking of the latest transactions in the system, through the audit events in the database, login and uploads.
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function audits(){
 		//mount the page layout

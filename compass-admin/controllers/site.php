@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Site extends CI_Controller {
@@ -42,8 +42,8 @@ class Site extends CI_Controller {
 	 * Allows viewing the main content of the site.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//Arrow visitation statistics
@@ -77,8 +77,8 @@ class Site extends CI_Controller {
 	 * Used in layouts in the website's homepage.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function p(){
 		set_stat();
@@ -94,8 +94,8 @@ class Site extends CI_Controller {
 	 * Displays the list of content type post.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function blog(){
 		//Arrow visitation statistics
@@ -117,8 +117,8 @@ class Site extends CI_Controller {
 	 * Displays the content type post.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function post(){
 		//checks if the id was passed or post slug in the url
@@ -177,8 +177,8 @@ class Site extends CI_Controller {
 	 * Displays the content type single page.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function page(){
 		//checks if the id was passed or post slug in the url
@@ -206,8 +206,8 @@ class Site extends CI_Controller {
 	 * Displays the content type media.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function media(){
 		//if no value is passed id or slug in the url redirects to the main stop
@@ -231,8 +231,8 @@ class Site extends CI_Controller {
 	 * Displays the content type post of the single category.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function tag(){
 		//if no value is passed id or slug in the url redirects to the main stop
@@ -258,8 +258,8 @@ class Site extends CI_Controller {
 	 * Displays the content type post of the single author.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function author(){
 		//if no value is passed id in the url redirects to the main stop
@@ -285,8 +285,8 @@ class Site extends CI_Controller {
 	 * Displays the content for searchs.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function search(){
 		//if no value is passed term in the url redirects to the main stop
@@ -314,8 +314,8 @@ class Site extends CI_Controller {
 	 * Displays the error 404.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function error(){
 		//Arrow visitation statistics

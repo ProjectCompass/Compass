@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Welcome extends CI_Controller {
@@ -25,8 +25,8 @@ class Welcome extends CI_Controller {
 	 * Allows redirecting of homepage of the system.
 	 *
 	 * @access     public
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//loads utilities

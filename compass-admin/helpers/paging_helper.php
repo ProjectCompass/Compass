@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 // ------------------------------------------------------------------------
@@ -23,8 +23,8 @@
  * @access  private
  * @param   array string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_query($config=NULL, $type=NULL){
     $CI =& get_instance();
@@ -58,18 +58,20 @@ function get_query($config=NULL, $type=NULL){
  * @access  private
  * @param   array string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_pagination($config=NULL, $link=NULL){
     $CI =& get_instance();
     $CI->load->helper('url');
     $pagination = FALSE;
-    $pagination_rows = get_setting('general_large_list');
+    if (isset($config['pagination_rows']) == NULL):
+        $pagination_rows = get_setting('general_large_list');
+    endif;
     $pagination_type = 'full';
     $pagination_segment = 3;
     $pagination_url = base_url();
-    $pagination_start = 'Início';
+    $pagination_start = 'first';
     $pagination_start_open = '<li>';
     $pagination_start_close = '</li>';
     $pagination_show_links = TRUE;
@@ -141,8 +143,8 @@ function get_pagination($config=NULL, $link=NULL){
  * @access  private
  * @param   string string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_th_orderby($label=NULL, $column=NULL, $config){
     $CI =& get_instance();
@@ -172,8 +174,8 @@ function get_th_orderby($label=NULL, $column=NULL, $config){
  * @access  private
  * @param   string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_paging_search($search_for=NULL, $config=NULL){
     $CI =& get_instance();

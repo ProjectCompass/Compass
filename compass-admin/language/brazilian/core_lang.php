@@ -79,7 +79,12 @@ $lang['core_day_saturday']                 = 'Sab';
 $lang['core_day_sunday']                   = 'Dom';
 $lang['core_colors_pallet']                = 'Cores temáticas, Cores básicas, Mais cores, Cores principais, Paleta, Histórico.';
 $lang['core_compass_url']                  = 'https://github.com/ProjectCompass/';
-$lang['core_confirm_delete']               = 'Deseja realmente excluir este registro?\nEsta operação não poderá ser desfeita!';
+$lang['core_confirm_delete']               = 'Deseja realmente excluir este registro?\nEsta operação não pode ser desfeita!';
+$lang['core_menu']                         = 'Menu';
+$lang['core_books']                        = 'Livros';
+$lang['core_books_catalog']                = 'Catálogo';
+$lang['core_books_loans']                  = 'Empréstimos';
+$lang['core_books_settings']               = 'Configurações';
 //Login
 $lang['login']                             = 'Login';
 $lang['login_field_pass']                  = 'Senha';

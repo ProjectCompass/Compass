@@ -32,6 +32,11 @@ make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_cms_stats'), 'cms',
 make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_cms_settings'), 'cms', 'settings', 'perm_contentssettings_', get_setting('module_cms')).
 make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_cms_view_site'), 'cms', 'site', NULL, get_setting('module_cms')).
 make_menu('menu_space').
+make_menu('menu_item', '<i class="fa fa-book"></i>'.lang('core_books'), 'books', 'catalog', '', get_setting('module_books')).
+make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_books_catalog'), 'books', 'catalog', '', get_setting('module_books')).
+make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_books_loans'), 'books', 'loans', '', get_setting('module_books')).
+make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_books_settings'), 'books', 'settings', '', get_setting('module_books')).
+make_menu('menu_space').
 make_menu('menu_item', '<i class="fa fa-user"></i>'.lang('core_users'), 'users', '', 'perm_listusers_').
 make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_users_list'), 'users', 'index', 'perm_listusers_').
 make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_users_insert'), 'users', 'insert', 'perm_insertusers_').

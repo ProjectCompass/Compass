@@ -13,7 +13,7 @@
  * @copyright	Copyright (c) 2014, Compass, Inc.
  * @author		Francisco Rodrigo Cunha de Sousa
  * @link		http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Settings extends CI_Controller {
@@ -42,8 +42,8 @@ class Settings extends CI_Controller {
 	 * Allows the define the main system settings
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function index(){
 		//access permission
@@ -108,8 +108,8 @@ class Settings extends CI_Controller {
 	 * Allows the define the aparence of the dashboard settings
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function aparence(){
 		//access permission
@@ -147,8 +147,8 @@ class Settings extends CI_Controller {
 	 * Allows the define the aparence of the dashboard settings
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function modules(){
 		//access permission
@@ -185,8 +185,8 @@ class Settings extends CI_Controller {
 	 * Allows the define the options of the dashboard, such as color of the top bar
 	 *
 	 * @access     private
-	 * @since      1.0.0
-	 * @modify     1.0.0
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
 	public function options(){
 		//saves the option set by each user color of the top bar in bd

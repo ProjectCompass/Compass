@@ -10,7 +10,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 
@@ -24,8 +24,8 @@
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function initialize_dashboard(){
     $CI =& get_instance();
@@ -59,8 +59,8 @@ function initialize_dashboard(){
  * @access  private
  * @param   string string string array
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_module($module=NULL, $screen=NULL, $directory='core', $array=NULL){
     $CI =& get_instance();
@@ -92,8 +92,8 @@ function load_module($module=NULL, $screen=NULL, $directory='core', $array=NULL)
  * @access  private
  * @param   string string bool bool
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function set_theme($prop, $value, $replace=TRUE, $load_template=TRUE){
     $CI =& get_instance();
@@ -116,8 +116,8 @@ function set_theme($prop, $value, $replace=TRUE, $load_template=TRUE){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_template(){
     $CI =& get_instance();
@@ -135,8 +135,8 @@ function load_template(){
  * @access  private
  * @param   string string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_css($file=NULL, $folder='css', $media='all'){
     if ($file != NULL):
@@ -164,8 +164,8 @@ function load_css($file=NULL, $folder='css', $media='all'){
  * @access  private
  * @param   string string bool
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_js($file=NULL, $folder='js', $remote=FALSE){
     if ($file != NULL):
@@ -197,8 +197,8 @@ function load_js($file=NULL, $folder='js', $remote=FALSE){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_tinymce($is_small=FALSE){
     $CI =& get_instance();
@@ -218,8 +218,8 @@ function init_tinymce($is_small=FALSE){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_codemirror(){
     $CI =& get_instance();
@@ -238,8 +238,8 @@ function init_codemirror(){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_datetimepicker(){
     $CI =& get_instance();
@@ -269,8 +269,8 @@ function init_tagsinputmaster(){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_colorpicker(){
     $CI =& get_instance();
@@ -289,8 +289,8 @@ function init_colorpicker(){
  * @access  private
  * @param   no
  * @return  NULL
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_scrollbar(){
     $CI =& get_instance();
@@ -309,8 +309,8 @@ function init_scrollbar(){
  * @access  private
  * @param   no
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function init_highcharts(){
     $CI =& get_instance();
@@ -327,8 +327,8 @@ function init_highcharts(){
  * @access  private
  * @param   string string string string string string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NULL, $permission=NULL, $condition=1){
     $CI =& get_instance();
@@ -412,8 +412,8 @@ function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NUL
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_url_class($prop){
     $CI =& get_instance();
@@ -445,8 +445,8 @@ function get_url_class($prop){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_url_title_original($url_string){
     $url_title = $url_string;
@@ -465,8 +465,8 @@ function get_url_title_original($url_string){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_layout($layout_file){
     $CI =& get_instance();
@@ -486,8 +486,8 @@ function load_layout($layout_file){
  * @access  private
  * @param   no
  * @return  array
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function load_layout_files(){
     $CI =& get_instance();
@@ -505,8 +505,8 @@ function load_layout_files(){
  * @access  private
  * @param   string
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function count_comments_unmoderated(){
     $CI =& get_instance();
@@ -526,8 +526,8 @@ function count_comments_unmoderated(){
  * @access  private
  * @param   no
  * @return  string
- * @since   1.0.0
- * @modify  1.0.0
+ * @since   0.0.0
+ * @modify  0.0.0
  */
 function get_css_theme(){
     $CI =& get_instance();

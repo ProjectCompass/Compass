@@ -13,7 +13,7 @@
  * @copyright   Copyright (c) 2014, Compass, Inc.
  * @author      Francisco Rodrigo Cunha de Sousa
  * @link        http://rodrigosousa.info
- * @since       1.0.0
+ * @since       0.0.0
  */
 
 class Login extends CI_Controller {
@@ -37,8 +37,8 @@ class Login extends CI_Controller {
      * Allows login to the system with username and password or email.
      *
      * @access     public
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
 	public function index(){
         //if you are logged redirects to the dashboard
@@ -158,8 +158,8 @@ class Login extends CI_Controller {
      * Performs off the system.
      *
      * @access     public
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
 	public function logoff(){
         //performs audit
@@ -201,8 +201,8 @@ class Login extends CI_Controller {
      * Allows you to enter data into the system in order to create an account.
      *
      * @access     public
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function signup(){
         //if you are logged redirects to the dashboard
@@ -249,8 +249,8 @@ class Login extends CI_Controller {
      * Allows to generate and send a new password to the user.
      *
      * @access     public
-     * @since      1.0.0
-     * @modify     1.0.0
+     * @since      0.0.0
+     * @modify     0.0.0
      */
     public function newpassword(){
         //if you are logged redirects to the dashboard
