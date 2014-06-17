@@ -47,6 +47,29 @@ class Install extends CI_Controller {
 	 * @modify     0.0.0
 	 */
 	public function index(){
+		//passes to the next screen
+		if ($this->input->post('save')):
+			redirect('install/second/'.$this->uri->segment(3));
+		endif;
+		//mount the page layout
+		set_theme('title', $this->lang->line('install_error_title'));
+		set_theme('content', load_module('install', 'first'));
+		set_theme('template', 'base_view');
+		load_template();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * The second page
+	 *
+	 * Page for preconditions for installing the system
+	 *
+	 * @access     public
+	 * @since      0.0.0
+	 * @modify     0.0.0
+	 */
+	public function second(){
 		//resets settings
 		$file_routes = '
 <?php  if ( ! defined("BASEPATH")) exit("No direct script access allowed");
@@ -122,29 +145,6 @@ $db["default"]["stricton"] = FALSE;
 /* End of file database.php */
 /* Location: ./application/config/database.php */';
 			write_file('./compass-admin/config/database.php', trim($file_database));
-		//passes to the next screen
-		if ($this->input->post('save')):
-			redirect('install/second/'.$this->uri->segment(3));
-		endif;
-		//mount the page layout
-		set_theme('title', $this->lang->line('install_error_title'));
-		set_theme('content', load_module('install', 'first'));
-		set_theme('template', 'base_view');
-		load_template();
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * The second page
-	 *
-	 * Page for preconditions for installing the system
-	 *
-	 * @access     public
-	 * @since      0.0.0
-	 * @modify     0.0.0
-	 */
-	public function second(){
 		//passes to the next screen
 		if ($this->input->post('save')):
 			redirect('install/third/'.$this->uri->segment(3));
