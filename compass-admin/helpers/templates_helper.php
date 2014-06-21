@@ -62,7 +62,7 @@ function initialize_dashboard(){
  * @since   0.0.0
  * @modify  0.0.0
  */
-function load_module($module=NULL, $screen=NULL, $directory='core', $array=NULL){
+function load_module($module=NULL, $screen=NULL, $array=array()){
     $CI =& get_instance();
     //performs the function only if the module is not null
     if ($module != NULL):
@@ -72,11 +72,8 @@ function load_module($module=NULL, $screen=NULL, $directory='core', $array=NULL)
                 $vars[$k] = $v;
             endforeach;
         endif;
-        if ($directory == NULL):
-            $directory = 'core';
-        endif;
         //loads the view
-        return $CI->load->view("$directory/$module", $vars, TRUE);
+        return $CI->load->view("$module", $vars, TRUE);
     else:
         return FALSE;
     endif;
@@ -204,7 +201,7 @@ function init_tinymce($is_small=FALSE){
     $CI =& get_instance();
     set_theme('headerinc', load_js(array('jquery.tinymce.min'),'scripts/tinymce'), FALSE);
     set_theme('headerinc', load_js(array('tinymce.min'),'scripts/tinymce'), FALSE);
-    set_theme('headerinc', load_module('includes', ($is_small == TRUE) ? 'tinymcesmall' : 'tinymce'), FALSE);
+    set_theme('headerinc', load_module('includes_view', ($is_small == TRUE) ? 'tinymcesmall' : 'tinymce'), FALSE);
 }
 
 
@@ -225,7 +222,7 @@ function init_codemirror(){
     $CI =& get_instance();
     set_theme('headerinc', load_css(array('codemirror'),'scripts/Codemirror'), FALSE);
     set_theme('headerinc', load_js(array('jquery.codemirror.min'),'scripts/Codemirror'), FALSE);
-    set_theme('footerinc', load_module('includes', 'codemirror'), FALSE);
+    set_theme('footerinc', load_module('includes_view', 'codemirror'), FALSE);
 }
 
 // ------------------------------------------------------------------------
@@ -245,7 +242,7 @@ function init_datetimepicker(){
     $CI =& get_instance();
     set_theme('headerinc', load_css(array('jquery.datetimepicker'),'scripts/DateTimePicker'), FALSE);
     set_theme('headerinc', load_js(array('jquery.datetimepicker'),'scripts/DateTimePicker'), FALSE);
-    set_theme('footerinc', load_module('includes', 'datetimepicker'), FALSE);
+    set_theme('footerinc', load_module('includes_view', 'datetimepicker'), FALSE);
 }
 
 
@@ -256,7 +253,7 @@ function init_tagsinputmaster(){
     $CI =& get_instance();
     set_theme('headerinc', load_css(array('jquery.tagsinput'),'scripts/TagsInputMaster'), FALSE);
     set_theme('footerinc', load_js(array('jquery.tagsinput.min'),'scripts/TagsInputMaster'), FALSE);
-    set_theme('footerinc', load_module('includes', 'tagsinputmaster'), FALSE);
+    set_theme('footerinc', load_module('includes_view', 'tagsinputmaster'), FALSE);
 }
 
 // ------------------------------------------------------------------------
@@ -276,7 +273,7 @@ function init_colorpicker(){
     $CI =& get_instance();
     set_theme('headerinc', load_css(array('evol.colorpicker'),'scripts/Colorpicker/css'), FALSE);
     set_theme('footerinc', load_js(array('jquery-ui.min', 'evol.colorpicker.min'),'scripts/Colorpicker/js'), FALSE);
-    set_theme('footerinc', load_module('includes', 'colorpicker'), FALSE);
+    set_theme('footerinc', load_module('includes_view', 'colorpicker'), FALSE);
 }
 
 // ------------------------------------------------------------------------
@@ -296,7 +293,7 @@ function init_scrollbar(){
     $CI =& get_instance();
     set_theme('headerinc', load_css(array('scroller'),'scripts/Scrollbar'), FALSE);
     set_theme('footerinc', load_js(array('jquery.scroller.min'),'scripts/Scrollbar'), FALSE);
-    set_theme('footerinc', load_module('includes', 'scrollbar'), FALSE);
+    set_theme('footerinc', load_module('includes_view', 'scrollbar'), FALSE);
 }
 
 // ------------------------------------------------------------------------
@@ -325,36 +322,47 @@ function init_highcharts(){
  * Rules for assembly of the dashboard main menu.
  * 
  * @access  private
- * @param   string string string string string string
+ * @param   string string string string string string string
  * @return  string
  * @since   0.0.0
  * @modify  0.0.0
  */
-function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NULL, $permission=NULL, $condition=1){
+function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NULL, $permission=NULL, $condition=1, $value_module=NULL){
     $CI =& get_instance();
     $CI->load->helper('url');
     $class = $CI->router->class;
     $method = $CI->router->method;
     $user_level = get_session('user_level');
+    $module = ($value_module != NULL) ? $value_module.'/' : NULL;
     if ($condition == 1):
         if ($type=='menu_open'):
             return '<ul class="off-canvas-list">';
         elseif ($type == 'menu_item'):
             if (get_access($permission) || $permission == NULL):
-                if ($value_class != $class):
-                    return '<li><a href="'.base_url($value_class).'">'.$title.'</a></li>';
+                if ($value_class == $class || $value_module == $CI->uri->segment(1)):
+                    if ($value_class != $class || $CI->uri->segment(1) == $value_module) $title = $title.ucfirst($value_module);
+                    return '<li><label><a href="'.base_url($module.$value_class).'">'.$title.'</a></label></li>';
                 else:
-                    return '<li><label><a href="'.base_url($value_class).'">'.$title.'</a></label></li>';
+                    if ($value_class != $class || $CI->uri->segment(1) == $value_module) $title = $title.ucfirst($value_module);
+                    return '<li><a href="'.base_url($module.$value_class).'">'.$title.'</a></li>';
                 endif;
             else:
                 return '';
             endif;
         elseif ($type == 'menu_subitem'):
             if (get_access($permission) || $permission == NULL):
-                if ($value_class == $class && $value_method != $method):
-                    return '<li><a href="'.base_url($value_class.'/'.$value_method).'">'.$title.'</a></li>';
-                elseif ($value_class == $class && $value_method == $method):
-                    return '<li><label><a href="'.base_url($value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
+                if ($value_module == NULL && $CI->uri->segment(1) == $class):
+                    if ($value_class == $class && $value_method != $method):
+                        return '<li><a href="'.base_url($value_class.'/'.$value_method).'">'.$title.'</a></li>';
+                    elseif ($value_class == $class && $value_method == $method):
+                        return '<li><label><a href="'.base_url($value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
+                    endif;
+                elseif ($value_module != NULL && $CI->uri->segment(1) != $class && $CI->uri->segment(1) == $value_module):
+                    if ($CI->uri->segment(1) == $value_module && $value_class == $class && $value_method == $method):
+                        return '<li><label><a href="'.base_url($module.$value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
+                    else:
+                        return '<li><a href="'.base_url($module.$value_class.'/'.$value_method).'">'.$title.'</a></li>';
+                    endif;
                 endif;
             else:
                 return '';
@@ -400,6 +408,56 @@ function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NUL
     else:
         return NULL;
     endif;
+}
+
+// ------------------------------------------------------------------------
+
+ /**
+ * Get Menu
+ *
+ * Returns the menu including shortcuts to the tools of the core of the compass and the installed modules.
+ * 
+ * @access  private
+ * @param   no
+ * @return  string
+ * @since   0.1.0
+ * @modify  0.1.0
+ */
+function get_the_menu(){
+    $CI =& get_instance();
+    $CI->load->helper(array('url', 'functions'));
+    //Menu constructor
+    $logo = (get_setting('aparence_logo') != NULL) ? make_menu('menu_item','<img src="'.get_setting('aparence_logo').'" title="'.get_setting('general_title_site').'" />', 'dashboard') : NULL;
+    echo
+        make_menu('menu_open').
+        $logo.
+        make_menu('menu_item', '<i class="fa fa-compass"></i>'.lang('core_homepage'), '').
+        make_menu('menu_item', '<i class="fa fa-home"></i>'.lang('dashboard'), 'dashboard').
+        make_menu('menu_space')
+    ;
+    $themes_directorys = directory_map('./compass-admin/modules/', TRUE);
+    if (in_array('index.html', $themes_directorys)) unset($themes_directorys[array_search('index.html',$themes_directorys)]);
+    foreach ($themes_directorys as $name_theme_directory):
+        if (in_array($name_theme_directory.'_view.php', directory_map('./compass-admin/modules/'.$name_theme_directory.'/views/', TRUE))):
+            echo load_module($name_theme_directory.'/'.$name_theme_directory.'_view', 'menu');
+        endif;
+    endforeach;
+    echo 
+        make_menu('menu_item', '<i class="fa fa-user"></i>'.lang('users'), 'users', '', 'perm_listusers_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_list_all'), 'users', 'index', 'perm_listusers_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_insert_new'), 'users', 'insert', 'perm_insertusers_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings'), 'users', 'settings', 'perm_userssettings_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_profile'), 'users', 'profile/'.get_session('user_id'), 'perm_userspermissions_').
+        make_menu('menu_space').
+        make_menu('menu_item', '<i class="fa fa-cog"></i>'.lang('settings'), 'settings', '', 'perm_settings_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings_general'), 'settings', 'index', 'perm_settings_', get_setting('general_advanced_settings')).
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings_aparence'), 'settings', 'aparence', 'perm_settings_', get_setting('general_advanced_settings')).
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('permissions'), 'settings', 'permissions', 'perm_userspermissions_', get_setting('general_advanced_settings')).
+        make_menu('menu_item', '<i class="fa fa-wrench"></i>'.lang('tools'), 'tools', '', 'perm_tools_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('modules'), 'tools', 'modules', 'perm_tools_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('tools_audits'), 'tools', 'audits', 'perm_tools_').
+        make_menu('menu_close')
+    ;
 }
 
 // ------------------------------------------------------------------------
@@ -510,9 +568,11 @@ function load_layout_files(){
  */
 function count_comments_unmoderated(){
     $CI =& get_instance();
-    $CI->load->model('comments_model', 'comments');
-    if ($CI->comments->get_by_status('unmoderated')->num_rows() > 0):
-        return '<span class="count">'.$CI->comments->get_by_status('unmoderated')->num_rows().'</span>';
+    if (get_setting('module_cms') == 1 && get_setting('module_install_cms') == 1):
+        $CI->load->model('cms/comments_model', 'comments');
+        if ($CI->comments->get_by_status('unmoderated')->num_rows() > 0):
+            return '<span class="count">'.$CI->comments->get_by_status('unmoderated')->num_rows().'</span>';
+        endif;
     endif;
 }
 

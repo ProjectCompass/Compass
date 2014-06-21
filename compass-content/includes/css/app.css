@@ -118,7 +118,7 @@ footer p{margin: 0; padding: 0;}
 td.table-operations{height: 60px;}
 .table-operations{vertical-align: top;}
 .table-operations>img{float: left; width: 40px; margin-right: 8px;}
-.table-operations .table-action{display: none; padding: 0 5px !important; border-left: 1px solid #eee; font-size: 90%;}
+.table-operations .table-action{display: none; padding: 0 5px !important; border-left: 1px solid #ddd; font-size: 90%;}
 .table-operations:hover .table-action{display: inherit;}
 .table-operations .table-action-first{border: none !important; padding: 0 5px 0 0 !important;  border: none;}
 .table-operations .unapprove{color: #ff8800;}

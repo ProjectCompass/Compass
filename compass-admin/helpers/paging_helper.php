@@ -29,7 +29,6 @@
 function get_query($config=NULL, $type=NULL){
     $CI =& get_instance();
     $CI->load->helper('url');
-    $CI->load->model('posts_model', 'posts');
     if (isset($config['pagination_rows']) == NULL):
         $config['pagination_rows'] = get_setting('general_large_list');
     endif;
@@ -180,10 +179,9 @@ function get_th_orderby($label=NULL, $column=NULL, $config){
 function get_paging_search($search_for=NULL, $config=NULL){
     $CI =& get_instance();
     $CI->load->helper('url');
-    $class = ($CI->router->class != NULL) ? '/'.$CI->router->class : NULL;
-    $method = ($CI->router->method != NULL) ? '/'.$CI->router->method.'/0' : '/page/0';
+    $method = ($CI->router->method != NULL) ? '/0' : '/page/0';
     $orderby = '/orderby/'.$config['default_orderby'].'/order/'.$config['default_order'].'/';
     $search_for = ($search_for != NULL) ? 'search/'.url_title($search_for) : NULL;
-    redirect($class.$method.$orderby.$search_for);
+    redirect($config['pagination_url'].$method.$orderby.$search_for);
 }
 

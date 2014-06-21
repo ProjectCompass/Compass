@@ -43,7 +43,7 @@ class Stop extends CI_Controller {
 	public function index(){
 		//mount the page layout
         set_theme('title', lang('stop_access_denied'));
-        set_theme('content', load_module('stop', 'stop'));
+        set_theme('content', load_module('stop_view', 'stop'));
         load_template();
 	}
 }

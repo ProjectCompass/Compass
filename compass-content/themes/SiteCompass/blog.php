@@ -11,7 +11,7 @@
 				<?php $query_conFig = array(
 										'pagination'=>'true', 
 										'pagination_url'=>'blog/', 
-										'pagination_segment'=>4,
+										'pagination_segment'=>2,
 										'pagination_prefix'=>'<ul class=\"pagination\">',
 										'pagination_sufix'=>'</ul>',
 										'pagination_show_links'=>TRUE,

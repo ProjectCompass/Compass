@@ -50,7 +50,7 @@ class Dashboard extends CI_Controller {
 		//mount the page layout
 		init_highcharts();
 		set_theme('title', lang('dashboard'));
-		set_theme('content', load_module('dashboard', 'dashboard'));
+		set_theme('content', load_module('dashboard_view', 'dashboard'));
 		load_template();
 
 	}

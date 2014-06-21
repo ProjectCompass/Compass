@@ -4,10 +4,10 @@
 				<div class="row">
 					<p>
 						<h5><a href="<?php info_base_url(); ?>"><?php info_title(); ?></a></h5>
-						<a href="<?php info_base_url(); ?>site/page/sobre">SOBRE</a> 
-						<a href="<?php info_base_url(); ?>site/blog">BLOG</a> 
-						<a href="<?php info_base_url(); ?>site/page/contatos">CONTATOS</a> 
-						<a href="<?php info_base_url(); ?>site/page/sitemap">MAPA DO SITE</a> 
+						<a href="<?php info_base_url(); ?>page/sobre">SOBRE</a> 
+						<a href="<?php info_base_url(); ?>blog">BLOG</a> 
+						<a href="<?php info_base_url(); ?>page/contatos">CONTATOS</a> 
+						<a href="<?php info_base_url(); ?>page/sitemap">MAPA DO SITE</a> 
 					</p>
 					<p>© 1998–2014 COMPASS, Inc. All rights reserved.</p>
 				</div>

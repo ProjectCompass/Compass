@@ -29,7 +29,7 @@ class Users extends CI_Controller {
 		//loads of standard features dashboard
 		initialize_dashboard();
 		//sets the block submenu controller
-		set_theme('submenu', load_module('users', 'submenu'));
+		set_theme('submenu', load_module('users_view', 'submenu'));
 		//loads utilities
 		$this->load->model('usermeta_model', 'usermeta');
 		$this->load->model('userslevels_model', 'userslevels');
@@ -75,9 +75,9 @@ class Users extends CI_Controller {
 		$this->userslevels->do_update(array('userlevel_name'=>lang('users_userlevel_4_name'), 'userlevel_description'=>lang('users_userlevel_4_description')), array('userlevel_id'=>4), FALSE);
 		$this->userslevels->do_update(array('userlevel_name'=>lang('users_userlevel_5_name'), 'userlevel_description'=>lang('users_userlevel_5_description')), array('userlevel_id'=>5), FALSE);
 		//mount the page layout
-		set_theme('footerinc', load_module('includes', 'deletereg'), FALSE);
+		set_theme('footerinc', load_module('includes_view', 'deletereg'), FALSE);
 		set_theme('title', lang('users'));
-		set_theme('content', load_module('users', 'users', 'core', array('config'=>$config)));
+		set_theme('content', load_module('users_view', 'users', array('config'=>$config)));
 		set_theme('helper', lang('help_users'));
 		load_template();
 	}
@@ -117,7 +117,7 @@ class Users extends CI_Controller {
 		access('perm_viewprofileusers_', 'middle');
 		//mount the page layout
 		set_theme('title', lang('users_profile'));
-		set_theme('content', load_module('users', 'profile'));
+		set_theme('content', load_module('users_view', 'profile'));
 		set_theme('helper', lang('help_users_profile'));
 		load_template();
 	}
@@ -180,7 +180,7 @@ class Users extends CI_Controller {
 		endif;
 		//mount the page layout
 		set_theme('title', lang('users_insert'));
-		set_theme('content', load_module('users', 'insert'));
+		set_theme('content', load_module('users_view', 'insert'));
 		set_theme('helper', lang('help_users_insert'));
 		load_template();
 	}
@@ -273,7 +273,7 @@ class Users extends CI_Controller {
         endif;
         //mount the page layout
 		set_theme('title', lang('users_update'));
-		set_theme('content', load_module('users', 'update'));
+		set_theme('content', load_module('users_view', 'update'));
 		set_theme('helper', lang('help_update'));
 		load_template();
 	}
@@ -448,97 +448,13 @@ class Users extends CI_Controller {
 		endif;
 		//mount the page layout
 		set_theme('title', lang('users_settings'));
-		set_theme('content', load_module('users', 'settings'), FALSE);
+		set_theme('content', load_module('users_view', 'settings'), FALSE);
 		if (get_setting('users_advanced_settings') == 1):
-			set_theme('content', load_module('users', 'usersfields'), FALSE);
-			set_theme('content', load_module('users', 'userslevels'), FALSE);
+			set_theme('content', load_module('users_view', 'usersfields'), FALSE);
+			set_theme('content', load_module('users_view', 'userslevels'), FALSE);
 		endif;
-		set_theme('headerinc', load_module('includes', 'deletereg'), FALSE);
+		set_theme('headerinc', load_module('includes_view', 'deletereg'), FALSE);
 		set_theme('helper', lang('help_users_settings'));
-		load_template();
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * The page permissions
-	 *
-	 * Settings page in user permissions system
-	 * Allows you to configure the permissions for groups of users in the system.
-	 *
-	 * @access     private
-	 * @since      0.0.0
-	 * @modify     0.0.0
-	 */
-	public function permissions(){
-		//access permission
-		access('perm_userspermissions_');
-		//loads necessary tools
-		$this->load->model('userslevels_model', 'userslevels');
-		//saves changes made
-		if ($this->input->post('save')):
-			$query_userslevels = $this->userslevels->get_all()->result();
-			//receives the values ​​of the fields passed in view
-			$allpermissions = array(
-				'perm_ative_',
-				'perm_listposts_',
-				'perm_viewposts_',
-				'perm_insertposts_',
-				'perm_updateposts_',
-				'perm_deleteposts_',
-				'perm_listpages_',
-				'perm_viewpages_',
-				'perm_insertpages_',
-				'perm_updatepages_',
-				'perm_deletepages_',
-				'perm_medias_',
-				'perm_comments_',
-				'perm_themes_',
-				'perm_stats_',
-				'perm_contentssettings_',
-				'perm_listusers_',
-				'perm_viewprofileusers_',
-				'perm_insertusers_',
-				'perm_updateusers_',
-				'perm_updateuserlevel_',
-				'perm_updateuserstatus_',
-				'perm_userdelete_',
-				'perm_userssettings_',
-                'perm_userspermissions_',
-				'perm_settings_',
-				'perm_tools_',
-				'perm_germedia_',
-				'perm_bookslist_',
-				'perm_booksview_',
-				'perm_booksinsert_',
-				'perm_booksupdate_',
-				'perm_booksdelete_',
-				'perm_booksloansgerencie_',
-				'perm_bookssettings_'
-				);
-			//crossing rows and columns to get all the data from the table permissions
-			foreach ($allpermissions as $column):
-				foreach ($query_userslevels as $line):
-					$permission = $column;
-					$settings["$permission$line->userlevel_id"] = $this->input->post("$permission$line->userlevel_id");
-				endforeach;
-			endforeach;
-			//gives all permissions to users level 1
-			foreach ($allpermissions as $column):
-				$permission = $column;
-				$settings[$permission.'1'] = 1;
-			endforeach;
-			//enters the settings in bd
-			foreach ($settings as $setting_name => $setting_value):
-				set_setting($setting_name, $setting_value);
-			endforeach;
-			set_msg('msgok', lang('users_msg_update_sucess'), 'sucess');
-			redirect('users/permissions');
-		endif;
-		//mount the page layout
-		set_theme('title', lang('users_permissions'));
-		set_theme('content', load_module('users', 'permissions'));
-		set_theme('helper', lang('help_users_permissions'));
 		load_template();
 	}
 }

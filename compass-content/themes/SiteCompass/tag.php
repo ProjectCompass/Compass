@@ -18,7 +18,7 @@
                             <?php the_screenshot($post, TRUE); ?>
                         </div>
                         <div class="small-8 columns">
-                            <h2 class="post-title"><a href="<?php the_permalink($post); ?>" title="<?php the_title($post); ?>"><?php the_title($post); ?></a></h2>
+                            <h2 class="post-title"><a href="<?php the_permalink($post); ?>" title="<?php the_title($post); ?>">rwe</a></h2>
                             <div class="post-meta">
                                 <span>Publicado por: <?php the_author($post); ?>, em: <?php the_time($post); ?></span>
                             </div>

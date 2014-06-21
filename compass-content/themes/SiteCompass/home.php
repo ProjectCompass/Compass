@@ -43,7 +43,7 @@
 						<?php endforeach; ?>
 					</div>
 					<div class="small-12 columns">
-						<a href="<?php info_base_url(); ?>site/blog" class="right">Ver todos os posts do blog</a> 
+						<a href="<?php info_base_url(); ?>blog" class="right">Ver todos os posts do blog</a> 
 					</div>
 				</div>
 			</div>

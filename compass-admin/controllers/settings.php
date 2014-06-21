@@ -29,7 +29,7 @@ class Settings extends CI_Controller {
 		//loads of standard features dashboard
 		initialize_dashboard();
 		//sets the block submenu controller
-		set_theme('submenu', load_module('settings', 'submenu'));
+		set_theme('submenu', load_module('settings_view', 'submenu'));
 		set_theme('helper', lang('help_settings'));
 	}
 
@@ -95,7 +95,7 @@ class Settings extends CI_Controller {
 		endif;
 		//mount the page layout
 		set_theme('title', lang('settings'));
-		set_theme('content', load_module('settings', 'general'));
+		set_theme('content', load_module('settings_view', 'general'));
 		load_template();
 	}
 
@@ -134,45 +134,84 @@ class Settings extends CI_Controller {
 		endif;
 		//mount the page layout
 		set_theme('title', lang('settings_aparence'));
-		set_theme('content', load_module('settings', 'aparence'));
+		set_theme('content', load_module('settings_view', 'aparence'));
 		load_template();
 	}
 
 	// --------------------------------------------------------------------
 
 	/**
-	 * The default page
+	 * The page permissions
 	 *
-	 * Page with list of aparence settings
-	 * Allows the define the aparence of the dashboard settings
+	 * Settings page in user permissions system
+	 * Allows you to configure the permissions for groups of users in the system.
 	 *
 	 * @access     private
 	 * @since      0.0.0
 	 * @modify     0.0.0
 	 */
-	public function modules(){
+	public function permissions(){
 		//access permission
-		access('perm_settings_');
-		//registers data passed through the form of view
+		access('perm_userspermissions_');
+		//loads necessary tools
+		$this->load->model('userslevels_model', 'userslevels');
+		//saves changes made
 		if ($this->input->post('save')):
-			//get form values
-			$settings = elements(array(
-				'module_cms',
-				'module_books',
-				'module_journal',
-				'module_eventus',
-				'module_helpdesk'
-				), $this->input->post());
-			//set settings data
+			$query_userslevels = $this->userslevels->get_all()->result();
+			//receives the values ​​of the fields passed in view
+			$allpermissions = array(
+				'perm_ative_',
+				'perm_listposts_',
+				'perm_viewposts_',
+				'perm_insertposts_',
+				'perm_updateposts_',
+				'perm_deleteposts_',
+				'perm_listpages_',
+				'perm_viewpages_',
+				'perm_insertpages_',
+				'perm_updatepages_',
+				'perm_deletepages_',
+				'perm_medias_',
+				'perm_comments_',
+				'perm_themes_',
+				'perm_stats_',
+				'perm_contentssettings_',
+				'perm_listusers_',
+				'perm_viewprofileusers_',
+				'perm_insertusers_',
+				'perm_updateusers_',
+				'perm_updateuserlevel_',
+				'perm_updateuserstatus_',
+				'perm_userdelete_',
+				'perm_userssettings_',
+                'perm_userspermissions_',
+				'perm_settings_',
+				'perm_tools_',
+				'perm_germedia_'
+				);
+			//crossing rows and columns to get all the data from the table permissions
+			foreach ($allpermissions as $column):
+				foreach ($query_userslevels as $line):
+					$permission = $column;
+					$settings["$permission$line->userlevel_id"] = $this->input->post("$permission$line->userlevel_id");
+				endforeach;
+			endforeach;
+			//gives all permissions to users level 1
+			foreach ($allpermissions as $column):
+				$permission = $column;
+				$settings[$permission.'1'] = 1;
+			endforeach;
+			//enters the settings in bd
 			foreach ($settings as $setting_name => $setting_value):
 				set_setting($setting_name, $setting_value);
 			endforeach;
-			set_msg('msgok', lang('settings_msg_update_ok'), 'sucess');
-			redirect('settings/modules');
+			set_msg('msgok', lang('users_msg_update_sucess'), 'sucess');
+			redirect('settings/permissions');
 		endif;
 		//mount the page layout
-		set_theme('title', lang('settings_modules'));
-		set_theme('content', load_module('settings', 'modules'));
+		set_theme('title', lang('permissions'));
+		set_theme('content', load_module('settings_view', 'permissions'));
+		set_theme('helper', lang('help_permissions'));
 		load_template();
 	}
 
@@ -197,7 +236,13 @@ class Settings extends CI_Controller {
 			else:
 				redirect(base_url('dashboard'));
 			endif;
-		endif;		
+		endif;
+		//saves the option set by each user language of the top bar in bd
+		if ($this->uri->segment(3) == 'language' && $this->uri->segment(4) != NULL):
+			set_usermeta('user_language', $this->uri->segment(4), get_session('user_id'));
+            $this->session->set_userdata(array(set_session('system_language') => $this->uri->segment(4)));
+			redirect(base_url('dashboard'));
+		endif;
 	}
 	
 }

@@ -144,7 +144,7 @@ class Login extends CI_Controller {
         endif;
         //mount the page layout
         set_theme('title', lang('login'));
-        set_theme('content', load_module('login', 'login'));
+        set_theme('content', load_module('login_view', 'login'));
         set_theme('template', 'template_view');
         load_template();
     }
@@ -235,7 +235,7 @@ class Login extends CI_Controller {
         endif;
         //mount the page layout
         set_theme('title', lang('login_signup'));
-        set_theme('content', load_module('login', 'signup'));
+        set_theme('content', load_module('login_view', 'signup'));
         set_theme('template', 'template_view');
         load_template();
     }
@@ -283,7 +283,7 @@ class Login extends CI_Controller {
         endif;
         //mount the page layout
         set_theme('title', lang('login_newpassword'));
-        set_theme('content', load_module('login', 'newpassword'));
+        set_theme('content', load_module('login_view', 'newpassword'));
         set_theme('template', 'template_view');
         load_template();
     }

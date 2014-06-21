@@ -28,20 +28,27 @@
  */
 function lang($key=NULL){
     $CI =& get_instance();
-    if (get_session('system_language') == NULL):
-        $language = get_setting('general_language');
+    $CI->load->helper('directory');
+    if (get_usermeta('user_language', get_session('user_id')) != NULL):
+        $language = get_usermeta('user_language', get_session('user_id'));
     else:
-        $language = get_session('system_language');
+        if (get_session('system_language') == NULL):
+            $language = get_setting('general_language');
+        else:
+            $language = get_session('system_language');
+        endif;
     endif;
+    //load language the core
     $CI->lang->load('core', $language);
-    $CI->lang->load('cms', $language);
-    $CI->lang->load('books', $language);
-    if ($key != NULL):
+    //the function lang
+    if ($key != NULL && $key != FALSE):
         if ($CI->lang->line($key) != NULL):
             return $CI->lang->line($key);
         else:
-            return '<strong>ERROR 404 LANGUAGE STRING "'.$key.'"</strong>';
+            return '<strong>ERROR: LANGUAGE STRING "'.$key.'" NOT FOUND IN THE LANG "'.$language.'"</strong>';
         endif;
+    elseif ($key == FALSE):
+        return $language;
     else:
         return NULL;
     endif;
@@ -807,19 +814,19 @@ function set_stat($postid=''){
     $data['stat_postid'] = $postid;
     $data['stat_posturl'] = current_url();
     $CI->stats->do_insert($data);
-    if ($CI->uri->segment(1) == 'site' && $CI->uri->segment(2) == 'post' && $CI->uri->segment(3) != NULL):
-        $byid_or_byslug = (is_numeric($CI->uri->segment(3))) ? 'get_by_id' : 'get_by_slug';
-        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(3))->row()->post_id;
+    if ($CI->uri->segment(1) == 'post' && $CI->uri->segment(2) != NULL):
+        $byid_or_byslug = (is_numeric($CI->uri->segment(2))) ? 'get_by_id' : 'get_by_slug';
+        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(2))->row()->post_id;
         $views_post = ++$CI->posts->get_by_id($id_post)->row()->post_views;
         $CI->posts->do_update_stat(array('post_views'=>$views_post), array('post_id'=>$id_post));
-    elseif ($CI->uri->segment(1) == 'site' && $CI->uri->segment(2) == 'page' && $CI->uri->segment(3) != NULL):
-        $byid_or_byslug = (is_numeric($CI->uri->segment(3))) ? 'get_by_id' : 'get_by_slug';
-        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(3))->row()->post_id;
+    elseif ($CI->uri->segment(1) == 'page' && $CI->uri->segment(2) != NULL):
+        $byid_or_byslug = (is_numeric($CI->uri->segment(2))) ? 'get_by_id' : 'get_by_slug';
+        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(2))->row()->post_id;
         $views_post = ++$CI->posts->get_by_id($id_post)->row()->post_views;
         $CI->posts->do_update_stat(array('post_views'=>$views_post), array('post_id'=>$id_post));
-    elseif ($CI->uri->segment(1) == 'site' && $CI->uri->segment(2) == 'media' && $CI->uri->segment(3) != NULL):
-        $byid_or_byslug = (is_numeric($CI->uri->segment(3))) ? 'get_by_id' : 'get_by_slug';
-        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(3))->row()->post_id;
+    elseif ($CI->uri->segment(1) == 'media' && $CI->uri->segment(2) != NULL):
+        $byid_or_byslug = (is_numeric($CI->uri->segment(2))) ? 'get_by_id' : 'get_by_slug';
+        $id_post = $CI->posts->$byid_or_byslug($CI->uri->segment(2))->row()->post_id;
         $views_post = ++$CI->posts->get_by_id($id_post)->row()->post_views;
         $CI->posts->do_update_stat(array('post_views'=>$views_post), array('post_id'=>$id_post));
     endif;
