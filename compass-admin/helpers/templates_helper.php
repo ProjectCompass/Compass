@@ -45,8 +45,6 @@ function initialize_dashboard(){
     //loading js in footer
     set_theme('headerinc', load_js(array('modernizr', 'jquery-1.9.1.min')), FALSE);
     set_theme('footerinc', load_js(array('foundation.min', 'app')), FALSE);
-    //startup package
-    init_scrollbar();
 }
 
 // ------------------------------------------------------------------------

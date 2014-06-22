@@ -405,11 +405,7 @@ $db["default"]["stricton"] = FALSE;
 				('', 'general_large_list', '20'),
 				('', 'general_small_list', '10'),
 				('', 'general_advanced_settings', '0'),
-				('', 'module_cms', '".$this->input->post('module_cms')."'),
-				('', 'module_books', '".$this->input->post('module_books')."'),
-				('', 'module_journal', '".$this->input->post('module_journal')."'),
-				('', 'module_eventus', '".$this->input->post('module_eventus')."'),
-				('', 'module_helpdesck', '".$this->input->post('module_helpdesck')."');";
+				('', 'users_level_default', '5');";
 			$this->db->query($sql_bd);
 			//insert first system administrator user
 			$sql_bd = "INSERT INTO `users` (`user_id`, `user_username`, `user_pass`, `user_name`, `user_email`, `user_registered`, `user_status`, `user_level`, `user_displayname`) VALUES

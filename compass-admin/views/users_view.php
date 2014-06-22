@@ -95,7 +95,7 @@ switch ($screen) {
         $iduser = $this->uri->segment(3);
         if ($iduser==NULL):
             set_msg('msgerror', lang('users_msg_choose_profile'), 'error');
-            NULL('users');
+            redirect('users');
         endif;
         $query = $this->users->get_by_id($iduser)->row();
             echo '<ul class="pricing-table small-12 medium-10 large-8 small-centered columns">';

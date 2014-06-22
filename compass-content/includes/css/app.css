@@ -32,7 +32,7 @@ a.alertlink:hover{color: #FF0000 !important;}
 a.button-tiny{font-size: 75%; padding-top: 0.3rem; padding-right: 0.3rem !important; padding-bottom: 0.3rem; padding-left: 0.3rem !important; }
 
 /*ESTRUTURA*/
-.row{max-width: 80rem;}
+.row{max-width: 77.5rem;}
 html, body{height: 100%}
 .top-bar{z-index: 1;}
 #content-page{padding: 15px 0;}
@@ -69,18 +69,21 @@ ul.off-canvas-list li i{margin-right: 5px;}
 .title-top i{padding-left: 10px !important}
 .title-top-space{display:block; width:45px; height:45px;}
 .top-bar-section ul li i{font-size: 20px; position: relative; bottom: -2.5px !important; width: none;}
-.drop-profile-top-bar{min-width: 320px !important;}
-.drop-profile-top-bar>div.right{width: 130px;}
-.drop-profile-top-bar li{min-width: 100%;}
+.no-arrow-li{margin-right: -25px !important; padding-right: 7.5px !important;}
+.drop-profile-top-bar{min-width: 320px !important; background: #333 !important; margin-right: 20px !important;}
+.drop-profile-top-bar div.right{width: 130px !important;}
+.drop-profile-top-bar div.right a:hover{}
 .drop-profile-top-bar img{border: 1px solid #999;  margin: 10px auto;}
-.drop-help-top-bar{min-width: 450px !important; background: #fff !important; padding: 5px 3px 5px 10px; border-radius: 5px;}
-.drop-help-top-bar>div{width: 100%; display: block; height: 300px !important;}
-.drop-help-top-bar *{font-size: 95%; padding: 0; margin: 0;}
-.drop-help-top-bar h4{background: #f1f1f1; font-weight: bold; text-transform: uppercase; width: 100%; border-bottom: 1px solid #d1d1d1; line-height: 1.5rem;}
+.drop-help-top-bar{min-width: 450px !important; background: #fff !important; padding: 5px 3px 5px 10px !important; border: 1px solid #ccc !important; padding: 5px 3px 0px 10px !important; border-radius: 0 0 5px 5px;}
+.drop-help-top-bar>div{width: 100%; display: block;}
+.drop-help-top-bar *{font-size: 95%; padding: 0; margin: 0; background: #fff !important;}
+.drop-help-top-bar h4{background: #f1f1f1 !important; font-weight: bold; text-transform: uppercase; width: 100%; border-bottom: 1px solid #d1d1d1; line-height: 1.5rem;}
 .drop-help-top-bar h5{font-weight: bold; width: 100%; border-bottom: 1px solid #e1e1e1; font-weight: 1.5rem; margin-top: 8px;}
 .drop-help-top-bar p{font-size: 90%; margin-bottom: 10px; text-align: justify;}
-.drop-setting-top-bar{min-width: 180px !important; background: #fff !important; padding: 5px 3px 5px 10px; border-radius: 5px;}
+.drop-setting-top-bar{min-width: 180px !important; background: #fff !important; border: 1px solid #ccc !important; padding: 5px 3px 0px 10px !important; border-radius: 0 0 5px 5px;}
+.drop-setting-top-bar *{background: #fff !important;}
 .drop-setting-top-bar>div{width: 100%; display: block; min-height: 100px !important;}
+.drop-setting-top-bar hr{margin: 10px 0 0 0 !important;}
 span.count{background: #ff0000 !important; color: #fff; font-size: 11px; font-weight: bold; position: relative; top: -10px; height: 15px; padding: 0px 3px; margin: 0px; line-height: 0px; border-radius: 3px;}
 .color-pink{background: #DC4FAD !important;}
 .color-red-dark{background: #A10000 !important;}
