@@ -853,3 +853,27 @@ function excerpt($string, $chars) {
     endif;
     return substr($string, 0, $chars)."...";
 }
+
+// ------------------------------------------------------------------------
+
+ /**
+ * Replace String
+ *
+ * Constructs a html code to wikimedia.
+ * 
+ * @access  private
+ * @param   string
+ * @return  string
+ * @since   0.0.0
+ * @modify  0.0.0
+ */
+function replace_string($string=NULL){
+    if ($string != NULL):
+        $string = str_replace(array('----'), array('<hr>'), $string);
+        $string = str_replace(array('====== ', ' ======'), array('<h6>', '</h6>'), $string);
+        $string = str_replace(array('===== ', ' ====='), array('<h5>', '</h5>'), $string);
+        $string = str_replace(array('==== ', ' ===='), array('<h4>', '</h4>'), $string);
+        $string = str_replace(array('=== ', ' ==='), array('<h3>', '</h3>'), $string);
+        return str_replace(array('== ', ' =='), array('<h2>', '</h2><hr>'), $string);
+    endif;
+}

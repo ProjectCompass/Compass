@@ -1,5 +1,5 @@
-=== Books ===
-Module Name: Books
+=== Eventus ===
+Module Name: Eventus
 Module URI: https://github.com/ProjectCompass/compass
 Description: Books is a native module Compass and provides an environment for the management and control of libraries acerbic.
 Author: The Compass Community

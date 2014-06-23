@@ -98,7 +98,7 @@ switch ($screen) {
                                                 );
                                             printf('<td style="max-height:200px !important;">%s</td>', $the_module_description.' <a href="#" data-reveal-id="Modal-'.$name_theme_directory.'">'.lang('modules_more').'</a><br>'.lang('modules_version').' <strong>'.$the_module_version.'</strong> | '.lang('modules_by').' '.anchor($the_module_author_url, $the_module_author).' | '.anchor($the_module_url, lang('modules_plugin_view_url'))
                                                 );
-                                            echo '<div id="Modal-'.$name_theme_directory.'" class="reveal-modal" data-reveal><h3>'.ucfirst($name_theme_directory).'/readme.txt</h3><p>'.$the_text.'</p><a class="close-reveal-modal">&#215;</a></div>';
+                                            echo '<div id="Modal-'.$name_theme_directory.'" class="reveal-modal" data-reveal><h3>'.ucfirst($name_theme_directory).'/readme.txt</h3><p>'.replace_string($the_text).'</p><a class="close-reveal-modal">&#215;</a></div>';
                                         echo '</tr>';
                                     endif;
                                 endforeach;
@@ -142,7 +142,7 @@ switch ($screen) {
                                         );
                                     printf('<td style="max-height:200px !important;">%s</td>', $the_module_description.' <a href="#" data-reveal-id="Modal-'.$name_theme_directory.'">'.lang('modules_more').'</a><br>'.lang('modules_version').' <strong>'.$the_module_version.'</strong> | '.lang('modules_by').' '.anchor($the_module_author_url, $the_module_author).' | '.anchor($the_module_url, lang('modules_view_url'))
                                         );
-                                    echo '<div id="Modal-'.$name_theme_directory.'" class="reveal-modal" data-reveal><h3>'.ucfirst($name_theme_directory).'/readme.txt</h3><p>'.$the_text.'</p><a class="close-reveal-modal">&#215;</a></div>';
+                                    echo '<div id="Modal-'.$name_theme_directory.'" class="reveal-modal" style="height:450px; overflow-y:auto;" data-reveal><h3>'.ucfirst($name_theme_directory).'/readme.txt</h3><p>'.replace_string($the_text).'</p><a class="close-reveal-modal">&#215;</a></div>';
                                 echo '</tr>';
                             endif;
                         endforeach;
