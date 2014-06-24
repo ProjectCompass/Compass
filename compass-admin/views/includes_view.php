@@ -64,6 +64,27 @@ switch ($screen):
 		</script>
 	<?php
 		break;
+	case 'datatable':
+	?>
+		<script type="text/javascript">
+		    $(document).ready(function(){
+				$(".data-table").dataTable({
+					"oLanguage": {
+						"sSearch": "<?php echo lang('core_search'); ?>",
+						"sInfo": "<?php echo lang('core_showing'); ?> _START_  - _END_ , _TOTAL_ <?php echo lang('core_registers'); ?>"
+					},
+					"sScrollY": "auto",
+					"sScrollX": "100%",
+					"sScrollXInner": "100%",
+					"bPaginate": false,
+					"aaSorting": [[1, "asc"]]
+				});
+				$(".dataTables_filter").addClass('small-3 small-offset-9');
+				$(".dataTables_filter label").first().focus().addClass('');
+			});
+		</script>
+	<?php
+		break;
 	case 'datetimepicker':
 	?>
 		<script type="text/javascript">

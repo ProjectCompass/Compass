@@ -35,7 +35,9 @@ function get_query($config=NULL, $type=NULL){
     if ($type == 'all'):
         $search = get_url_title_original($CI->uri->segment($config['filter_value_segment']));
         $filter = $CI->uri->segment($config['filter_key_segment']);
-        return $CI->$config['model']->$config['method'](100000, NULL, $config['default_orderby'], $config['default_order'], $filter, $search);
+        return $CI->
+        $config['model']
+        ->$config['method'](100000, NULL, $config['default_orderby'], $config['default_order'], $filter, $search);
     else:
         $pagination_segment_value = ($CI->uri->segment($config['pagination_segment'])) ? $CI->uri->segment($config['pagination_segment']) : 1;
         $offset = $pagination_segment_value*$config['pagination_rows']-$config['pagination_rows'];

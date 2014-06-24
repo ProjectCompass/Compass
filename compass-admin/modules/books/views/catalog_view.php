@@ -202,8 +202,8 @@ switch ($screen) {
 					echo form_textarea(array('name'=>'book_synopsis', 'rows'=>5, 'class'=>'tinymce'), set_value('book_synopsis'));
 				echo '</div>';
 			echo '</div>';
-		echo form_submit(array('name'=>'save', 'class'=>'button radius tiny'), lang('books_save'));
-		echo anchor('books', lang('core_cancel'), array('class'=>'alertlink'));
+			echo form_submit(array('name'=>'save', 'class'=>'button radius tiny'), lang('books_save'));
+			echo anchor('books', lang('core_cancel'), array('class'=>'alertlink'));
 		echo form_close();
 		break;
 	case 'update':

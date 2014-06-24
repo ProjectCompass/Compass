@@ -123,12 +123,15 @@ td.table-operations{height: 60px;}
 .table-operations>img{float: left; width: 40px; margin-right: 8px;}
 .table-operations .table-action{display: none; padding: 0 5px !important; border-left: 1px solid #ddd; font-size: 90%;}
 .table-operations:hover .table-action{display: inherit;}
-.table-operations .table-action-first{border: none !important; padding: 0 5px 0 0 !important;  border: none;}
-.table-operations .unapprove{color: #ff8800;}
-.table-operations .unapprove:hover{color: #ff4400;}
-.table-operations .approve{color: #008000;}
-.table-operations .approve:hover{color: #004000;}
-.table-operations .delete{color: #600;}
+a.table-action-first{border: none !important; padding: 0 5px 0 0 !important;  border: none;}
+a.unapprove{color: #ff8800;}
+a.unapprove:hover{color: #ff4400;}
+a.approve{color: #008000;}
+a.approve:hover{color: #004000;}
+a.delete{color: #600;}
+a.delete:hover{color: #FF0000;}
+.panel-action{padding: 0 5px !important; border-left: 1px solid #ddd; font-size: 90%;}
+.panel-action-first{border: none !important; padding: 0 5px 0 0 !important;  border: none;}
 .table-operations .delete:hover{color: #FF0000;}
 .comments-icon span{font-size: 14px; color: #fff; position: relative; left: -15px; top: -2px;}
 .comments-icon i{font-size: 22px;}
@@ -160,9 +163,13 @@ fieldset small{position:relative; margin-top: -20px !important;}
 .title>img{width: 150px; border: 1px solid #fff; position: relative; float: left;}
 
 /*INSERT/UPDATE POSTS/PAGES PAGE*/
-a.button-tiny-insertimg{font-size: 70%; padding-top: 7px; padding-right: 10px; padding-bottom: 7px; padding-left: 10px; position: absolute; right: 18px; top: 3px; z-index: 999; background:none !important;}
+a.button-tiny-insertimg{font-size: 70%; padding-top: 7px; padding-right: 10px; padding-bottom: 7px; padding-left: 10px; position: absolute; right: 18px; top: 1px; z-index: 999; background:none !important;}
 a.button-tiny-insertimg:hover{background: #ccc !important;}
-a.button-tiny-insertimg i{font-size: 180% !important; color: #0072C6;}
+a.button-tiny-insertimg i{font-size: 180% !important; color: #2ba6cb;}
+a.button-tiny-upload{font-size: 70%; padding-top: 7px; padding-right: 10px; padding-bottom: 7px; padding-left: 10px; position: absolute; right: 18px; top: 1px; z-index: 1; background:none !important;}
+a.button-tiny-upload-label{font-size: 70%; padding-top: 7px; padding-right: 10px; padding-bottom: 7px; padding-left: 10px; position: absolute; right: 18px; top: 22px; z-index: 1; background:none !important;}
+a.button-tiny-upload-label:hover, a.button-tiny-upload:hover{background: #ccc !important;}
+a.button-tiny-upload-label i, a.button-tiny-upload i{font-size: 180% !important; color: #2ba6cb;}
 .category-box span{display: inline-block; border: 1px solid #E1E1E1; margin: 0 5px; padding-left: 15px; margin-bottom: 5px;}
 .positionrelative{position: relative !important;}
 
@@ -174,3 +181,17 @@ div#boxtabs div#tabs span:hover {background-color: #E2E2E2; color: #000;}
 div#boxtabs div#tabs span.selected {background-color: #FFFFFF; font-size: 16px; color: #000;}
 div#boxtabs ul#tabscontent {display: inline-block; width: 100%; height: auto; margin: 0; padding: 0;}
 div#boxtabs ul#tabscontent li {display: inline-block; width: 100%; height: auto; padding: 0; overflow: auto;}
+
+/*DATATABLES*/
+div.data-table-div{top: -20px; z-index: auto;}
+table.data-table{margin-bottom: -2px !important;}
+a.table-actions{width: 16px; height: 16px; display: inline-block; background-position: center center; background-repeat: no-repeat; margin-right: 3px;}
+.table-edit{background: url("../images/actions-edit.png");}
+.table-pass{background: url("../images/actions-pass.png");}
+.table-delete{background: url("../images/actions-delete.png");}
+.table-view{background: url("../images/actions-view.png");}
+th.sorting_asc{background: url("../images/order-asc.png") right center no-repeat;}
+th.sorting_desc{background: url("../images/order-desc.png") right center no-repeat;}
+
+
+

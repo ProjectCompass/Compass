@@ -121,6 +121,7 @@ $config["compress_output"] = FALSE;
 $config["time_reference"] = "local";
 $config["rewrite_short_tags"] = FALSE;
 $config["proxy_ips"] = "";
+$config["modules_locations"] = array(APPPATH."modules/" => "../modules/", APPPATH."../compass-content/plugins/" => "../../compass-content/plugins/");
 /* End of file config.php */
 /* Location: ./application/config/config.php */';
 			write_file('./compass-admin/config/config.php', trim($file_config));
@@ -226,6 +227,7 @@ $config["compress_output"] = FALSE;
 $config["time_reference"] = "local";
 $config["rewrite_short_tags"] = FALSE;
 $config["proxy_ips"] = "";
+$config["modules_locations"] = array(APPPATH."modules/" => "../modules/", APPPATH."../compass-content/plugins/" => "../../compass-content/plugins/");
 /* End of file config.php */
 /* Location: ./application/config/config.php */';
 			write_file('./compass-admin/config/config.php', trim($file_config));

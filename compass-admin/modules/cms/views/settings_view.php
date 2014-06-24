@@ -111,8 +111,8 @@ switch ($screen) {
                         echo '</div>';
                         echo '<div class="small-10 columns left">';
                             $options = array();
-                            $options['0'] = 'Não';
-                            $options['1'] = 'Sim';
+                            $options['0'] = lang('core_no');
+                            $options['1'] = lang('core_yes');
                             echo form_dropdown('site_comments_moderation', $options, get_setting('site_comments_moderation'));
                         echo '</div>';
                     echo '</div>';

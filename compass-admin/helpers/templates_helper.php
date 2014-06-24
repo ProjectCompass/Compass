@@ -206,6 +206,24 @@ function init_tinymce($is_small=FALSE){
 // ------------------------------------------------------------------------
 
  /**
+ * Initialize Datatables
+ *
+ * Initialize the tinymce to create tables dinamics.
+ * 
+ * @access  private
+ * @param   no
+ * @return  NULL
+ * @since   0.0.0
+ * @modify  0.0.0
+ */
+function init_datatables(){
+    set_theme('footerinc', load_js(array('jquery.dataTables.min'),'scripts/DataTables/js'), FALSE);
+    set_theme('headerinc', load_module('includes_view', 'datatable'), FALSE);
+}
+
+// ------------------------------------------------------------------------
+
+ /**
  * Initialize codemirror
  *
  * Initialize the CodeMirror to create textarea with html syntax.
@@ -453,6 +471,7 @@ function get_the_menu(){
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('permissions'), 'settings', 'permissions', 'perm_userspermissions_', get_setting('general_advanced_settings')).
         make_menu('menu_item', '<i class="fa fa-wrench"></i>'.lang('tools'), 'tools', '', 'perm_tools_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('modules'), 'tools', 'modules', 'perm_tools_').
+        make_menu('menu_subitem', '<i class="fa da"></i>'.lang('tools_files'), 'tools', 'files', 'perm_tools_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('tools_audits'), 'tools', 'audits', 'perm_tools_').
         make_menu('menu_close')
     ;
