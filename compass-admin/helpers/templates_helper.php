@@ -30,7 +30,7 @@ function initialize_dashboard(){
     $CI =& get_instance();
     //loads librarys, helpers and models recurrently used in the system
     $CI->load->library(array('parser', 'system', 'session', 'form_validation'));
-    $CI->load->helper(array('form', 'url', 'array', 'text'));
+    $CI->load->helper(array('form', 'url', 'array', 'text', 'paging'));
     $CI->load->model('users_model', 'users');
     $CI->load->model('usermeta_model', 'usermeta');
     //property standards as the title of the panel and roapé (are automatically entered in the system settings)
@@ -358,7 +358,7 @@ function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NUL
             if (get_access($permission) || $permission == NULL):
                 if ($value_class == $class || $value_module == $CI->uri->segment(1)):
                     if ($value_class != $class || $CI->uri->segment(1) == $value_module) $title = $title.ucfirst($value_module);
-                    return '<li><label><a href="'.base_url($module.$value_class).'">'.$title.'</a></label></li>';
+                    return '<li><label>'.$title.'</a></li>';
                 else:
                     if ($value_class != $class || $CI->uri->segment(1) == $value_module) $title = $title.ucfirst($value_module);
                     return '<li><a href="'.base_url($module.$value_class).'">'.$title.'</a></li>';
@@ -370,15 +370,15 @@ function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NUL
             if (get_access($permission) || $permission == NULL):
                 if ($value_module == NULL && $CI->uri->segment(1) == $class):
                     if ($value_class == $class && $value_method != $method):
-                        return '<li><a href="'.base_url($value_class.'/'.$value_method).'">'.$title.'</a></li>';
+                        return '<li class="subitem"><label><a href="'.base_url($value_class.'/'.$value_method).'">'.$title.'</a></label></li>';
                     elseif ($value_class == $class && $value_method == $method):
-                        return '<li><label><a href="'.base_url($value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
+                        return '<li class="subitem"><label class="active"><a href="'.base_url($value_class.'/'.$value_method).'">'.$title.'</a></label></li>';
                     endif;
                 elseif ($value_module != NULL && $CI->uri->segment(1) != $class && $CI->uri->segment(1) == $value_module):
                     if ($CI->uri->segment(1) == $value_module && $value_class == $class && $value_method == $method):
-                        return '<li><label><a href="'.base_url($module.$value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
+                        return '<li class="subitem"><label class="active"><a href="'.base_url($module.$value_class).'/'.$value_method.'">'.$title.'</a></label></li>';
                     else:
-                        return '<li><a href="'.base_url($module.$value_class.'/'.$value_method).'">'.$title.'</a></li>';
+                        return '<li class="subitem"><label><a href="'.base_url($module.$value_class.'/'.$value_method).'">'.$title.'</a></label></li>';
                     endif;
                 endif;
             else:
@@ -386,8 +386,6 @@ function make_menu($type=NULL, $title=NULL, $value_class=NULL, $value_method=NUL
             endif;
         elseif ($type == 'menu_label'):
             return '<li><label>'.$title.'</label></li>';
-        elseif ($type == 'menu_space'):
-            return '<li><label class="space"></label></li>';
         elseif ($type == 'menu_close'):
             return '</ul>';
         elseif ($type == 'submenu_open'):
@@ -449,8 +447,7 @@ function get_the_menu(){
         make_menu('menu_open').
         $logo.
         make_menu('menu_item', '<i class="fa fa-compass"></i>'.lang('core_homepage'), '').
-        make_menu('menu_item', '<i class="fa fa-home"></i>'.lang('dashboard'), 'dashboard').
-        make_menu('menu_space')
+        make_menu('menu_item', '<i class="fa fa-home"></i>'.lang('dashboard'), 'dashboard')
     ;
     echo 
         make_menu('menu_item', '<i class="fa fa-user"></i>'.lang('users'), 'users', '', 'perm_listusers_').
@@ -458,7 +455,6 @@ function get_the_menu(){
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_insert_new'), 'users', 'insert', 'perm_insertusers_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings'), 'users', 'settings', 'perm_userssettings_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_profile'), 'users', 'profile/'.get_session('user_id'), 'perm_userspermissions_').
-        make_menu('menu_space').
         make_menu('menu_item', '<i class="fa fa-cog"></i>'.lang('settings'), 'settings', '', 'perm_settings_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings_general'), 'settings', 'index', 'perm_settings_', get_setting('general_advanced_settings')).
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('settings_aparence'), 'settings', 'aparence', 'perm_settings_', get_setting('general_advanced_settings')).
@@ -491,10 +487,13 @@ function get_the_top_bar(){
         echo '<nav class="top-bar docs-bar" data-topbar="" role="navigation">';
             echo '<ul class="title-area">';
                 echo '<li class="name">';
-                    echo '<h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>';
+
+                    echo '<h1 class="show-for-medium"><a href="#" class="left-off-canvas-toggle"><i class="fa fa-th"></i></a></h1>';
+                    echo '<h1 class="show-for-small-down"><a href="#" class="left-off-canvas-toggle"><i class="fa fa-th"></i><span>'.get_setting('general_title_system').'</span></a></h1>';
                 echo '</li>';
-                echo '<li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>';
+                echo '<li class="toggle-topbar"><a href=""><span><i class="fa fa-user"></i></span></a></li>';
             echo '</ul>';
+
             echo '<section class="top-bar-section">';
                 echo '<ul id="top-bar-user" class="right">';
                     echo '<li class="has-dropdown">';
@@ -502,7 +501,7 @@ function get_the_top_bar(){
                         $infouser = $CI->users->get_by_id($iduserbe)->row();
                         echo '<a href="#">Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="'.avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE).'" /></a>';
                         echo '<ul class="dropdown">';
-                            echo '<li id="img-profile"><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">';
+                            echo '<li id="img-profile" class="hide-for-small"><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">';
                                 echo '<img id="top-bar-img-user-large" src="'.avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE).'" /></a>';
                             echo '</li>';
                             echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">Rodrigo Sousa</a></li>';
@@ -513,7 +512,7 @@ function get_the_top_bar(){
                 echo '</ul>';
                 echo '<ul class="left">';
                     echo '<li class="has-dropdown">';
-                        echo '<a href="#">'.get_setting('general_title_system').'</a>';
+                        echo '<a href="#"><span>'.get_setting('general_title_system').'</span></a>';
                         echo '<ul class="dropdown">';
                             echo '<li><a href="'.base_url().'">Visitar página inicial</a></li>';
                             echo '<li><a href="'.base_url('dashboard').'">Dashboard</a></li>';

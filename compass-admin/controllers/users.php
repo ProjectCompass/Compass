@@ -27,10 +27,9 @@ class Users extends CI_Controller {
 		//restricts access to people logged
 		//loads of standard features dashboard
 		initialize_dashboard();
-		//sets the block submenu controller
-		set_theme('submenu', load_module('users_view', 'submenu'));
 		//loads utilities
 		$this->load->model('usermeta_model', 'usermeta');
+		$this->load->model('userslevels_model', 'userslevels');
 	}
 
 	// --------------------------------------------------------------------
@@ -69,11 +68,8 @@ class Users extends CI_Controller {
 		$this->userslevels->do_update(array('userlevel_name'=>lang('users_userlevel_4_name'), 'userlevel_description'=>lang('users_userlevel_4_description')), array('userlevel_id'=>4), FALSE);
 		$this->userslevels->do_update(array('userlevel_name'=>lang('users_userlevel_5_name'), 'userlevel_description'=>lang('users_userlevel_5_description')), array('userlevel_id'=>5), FALSE);
 		//mount the page layout
-		set_theme('footerinc', load_module('includes_view', 'deletereg'), FALSE);
-		set_theme('title', lang('users'));
-		set_theme('content', load_module('users_view', 'users', array('config'=>$config)));
-		set_theme('helper', lang('help_users'));
-		load_template();
+		//set_theme('footerinc', load_module('includes_view', 'deletereg'), FALSE);
+		load_template(lang('users'), load_module('users_view', 'users', array('config'=>$config)), 'template_view');
 	}
 
 	// --------------------------------------------------------------------

@@ -20,12 +20,9 @@ echo '<body>';
     <div class="inner-wrap">
         <?php get_the_top_bar(); ?>
 
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><label>Foundation</label></li>
-                <li><a href="#">The Psychohistorians</a></li>
-                <li><a href="#">...</a></li>
-            </ul>
+        <aside class="left-off-canvas-menu hide-for-large-up">
+            <?php get_the_menu(); ?>
+
         </aside>
 
         <aside class="right-off-canvas-menu">
@@ -38,7 +35,7 @@ echo '<body>';
 
         <section class="main-section">
             <div class="row">
-                <div id="menu" class="show-for-large large-2 columns">
+                <div id="menu" class="show-for-large-up large-2 columns">
                     <?php get_the_menu(); ?>
                 </div>
                 <div id="content" class="large-10 columns">
@@ -47,7 +44,7 @@ echo '<body>';
             </div>
             <div id="footer" class="small-12 columns">
                 <div class="row">
-                    Orgulhosamente produzido com <a href="https://github.com/ProjectCompass/Compass">Compass</a>!
+                    Orgulhosamente produzido com <a href="https://github.com/ProjectCompass/Compass"><i class="fa fa-compass"></i> Compass</a>!
                 </div>
             </div>
         </section>
@@ -56,6 +53,7 @@ echo '<body>';
 
     </div>
 </div>
+        
 <?php
 echo '{footerinc}';
 echo '</body>';
