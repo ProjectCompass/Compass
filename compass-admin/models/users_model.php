@@ -119,10 +119,14 @@ class Users_model extends CI_Model {
      * @since      0.0.0
      * @modify     0.0.0
      */
-    public function do_login($login='admin', $password='e10adc3949ba59abbe56e057f20f883e'){
+    public function do_login($login=NULL, $password=NULL){
         if ($login && $password):
             //checks has passed the email address or username
-
+            if(stripos($login, '@')):
+                $this->db->where('user_email', $login);
+            else:
+                $this->db->where('user_username', $login);
+            endif;
             //checks for username and password in bd
             $this->db->where('user_pass', $password);
             $this->db->where('user_status', 1);

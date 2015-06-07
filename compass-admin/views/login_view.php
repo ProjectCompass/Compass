@@ -2,6 +2,21 @@
 
 switch ($screen) {
 	case 'login':
+        echo '<nav class="top-bar docs-bar" data-topbar="" role="navigation">';
+            echo '<ul class="title-area">';
+                echo '<li class="name">';
+                    echo '<h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>';
+                echo '</li>';
+            echo '</ul>';
+            echo '<section class="top-bar-section">';
+                echo '<ul class="right">';
+                    echo '<li><a href="'.base_url('login').'">Acessar</a></li>';
+                echo '</ul>';
+                echo '<ul class="left">';
+                    echo '<li><a href="">'.get_setting('general_title_system').'</a></li>';
+                echo '</ul>';
+            echo '</section>';
+        echo '</nav>';
         echo '<div id="login-index" class="row">';
             echo '<br><br><br><br><br>';
             echo '<div class="small-8 large-3 small-centered columns">';

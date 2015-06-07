@@ -32,7 +32,7 @@ echo '<body>';
                         $iduserbe = (get_session('user_id')) ? get_session('user_id') : '0';
                         $infouser = $this->users->get_by_id($iduserbe)->row();
                         ?>
-                        <a>Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
+                        <a href="#">Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
                         <ul class="dropdown">
                             <li id="img-profile"><a href="<?php echo base_url('users/profile/'.$infouser->user_id.'') ?>">
                                 <img id="top-bar-img-user-large" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
@@ -45,7 +45,7 @@ echo '<body>';
                 </ul>
                 <ul class="left">
                     <li class="has-dropdown">
-                        <a href=""><?php print get_setting('general_title_system'); ?></a>
+                        <a href="#"><?php print get_setting('general_title_system'); ?></a>
                         <ul class="dropdown">
                             <li><a href="<?php echo base_url(); ?>">Visitar página inicial</a></li>
                             <li><a href="<?php echo base_url('dashboard'); ?>">Dashboard</a></li>
