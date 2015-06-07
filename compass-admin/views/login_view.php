@@ -5,9 +5,9 @@ switch ($screen) {
         echo '<div id="login-index" class="row">';
             echo '<br><br><br><br><br>';
             echo '<div class="small-8 large-3 small-centered columns">';
-                //errors_validating();
-                //get_msg('logoffok');
-                //get_msg('errorlogin');
+                errors_validating();
+                get_msg('logoffok');
+                get_msg('errorlogin');
                 echo '<div class="login-sigall panel white">';
                     echo '<h3>'.lang('login_title_box').'</h3>';
                     echo form_open('login', 'id="login-index-form-login"');

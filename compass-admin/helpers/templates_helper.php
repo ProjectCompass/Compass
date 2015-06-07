@@ -42,7 +42,7 @@ function initialize_dashboard(){
     //loading css in header
     set_theme('headerinc', load_css(array('normalize', 'style', 'foundation.min', 'app', 'font-awesome/css/font-awesome.min')), FALSE);
     //loading js in footer
-    set_theme('headerinc', load_js(array('modernizr', 'jquery-1.9.1.min')), FALSE);
+    set_theme('headerinc', load_js(array('modernizr', 'jquery-1.11.3.min')), FALSE);
     set_theme('footerinc', load_js(array('foundation.min', 'app')), FALSE);
 }
 
@@ -113,10 +113,12 @@ function set_theme($prop, $value, $replace=TRUE, $load_template=TRUE){
  * @since   0.0.0
  * @modify  0.0.0
  */
-function load_template(){
+function load_template($title=NULL, $content=NULL, $template='template_view'){
     $CI =& get_instance();
-    $CI->load->library('system');
-    $CI->parser->parse($CI->system->theme['template'], $CI->system->theme);
+    set_theme('title', $title);
+    set_theme('content', $content);
+    set_theme('template', $template);
+    $CI->parser->parse($CI->system->theme['template'], $CI->system->theme);    
 }
 
 // ------------------------------------------------------------------------

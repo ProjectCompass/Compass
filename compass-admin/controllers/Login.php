@@ -1,25 +1,30 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
-* Login class
-*
-* Controller of access to the system
-*
-* Maps to the following URL
-*      http://yoursite.com/login
-*
-* @package     Compass
-* @subpackage  Core
-* @copyright   Copyright (c) 2014, Compass, Inc.
-* @author      Francisco Rodrigo Cunha de Sousa
-* @link        http://rodrigosousa.info
-* @since       0.0.0
-*/
+ * Login class
+ *
+ * Controller of access to the system
+ *
+ * Maps to the following URL
+ *      http://yoursite.com/login
+ *
+ * @package     Compass
+ * @subpackage  Core
+ * @copyright   Copyright (c) 2014, Compass, Inc.
+ * @author      Francisco Rodrigo Cunha de Sousa
+ * @link        http://rodrigosousa.info
+ * @since       0.0.0
+ */
+
 class Login extends CI_Controller {
-	/**
+
+    /**
      * Constructor
+     *
      */
 	public function __construct(){
 		parent::__construct();
+        //loads of standard features dashboard
 		initialize_dashboard();
 	}
 
@@ -69,7 +74,7 @@ class Login extends CI_Controller {
             endif;
         endif;
         //data validation
-		$this->form_validation->set_message('required', lang('core_msg_required'));
+        $this->form_validation->set_message('required', lang('core_msg_required'));
         $this->form_validation->set_message('valid_email', lang('core_msg_email'));
         $this->form_validation->set_message('min_length', lang('login_msg_min_length'));
         $this->form_validation->set_rules('login', strtoupper(lang('login_field_login')), 'trim|required|strtolower');
@@ -116,7 +121,7 @@ class Login extends CI_Controller {
                 if ($redirect != ''):
                     redirect($redirect);
                 else:
-                    redirect('dashboard'); 
+                    redirect('dashboard');
                 endif;
             else:
                 //blocks lighted by the login fails
@@ -138,10 +143,7 @@ class Login extends CI_Controller {
             endif;
         endif;
         //mount the page layout
-        set_theme('title', lang('login'));
-        set_theme('content', load_module('login_view', 'login'));
-        set_theme('template', 'template_view');
-        load_template();
+        load_template('titulo', load_module('login_view', 'login'), 'template_view');
     }
 
     // --------------------------------------------------------------------
@@ -182,7 +184,6 @@ class Login extends CI_Controller {
             set_session('system_language') => ''
             ));
         $this->session->sess_destroy();
-        $this->session->sess_create();
         set_msg('logoffok', lang('login_msg_loggoff'), 'sucess');
         redirect('login');
     }
@@ -276,10 +277,13 @@ class Login extends CI_Controller {
                 redirect('login/newpassword');
             endif;
         endif;
-        //mount the page layout
-        set_theme('title', lang('login_newpassword'));
-        set_theme('content', load_module('login_view', 'newpassword'));
-        set_theme('template', 'template_view');
-        load_template();
+
+        load_template('titulo', load_module('login_view', 'newpassword'), 'template_view');
     }
+
+   
+
 }
+
+/* End of file login.php */
+/* Location: ./application/controllers/login.php */

