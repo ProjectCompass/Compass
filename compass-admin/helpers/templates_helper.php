@@ -474,6 +474,80 @@ function get_the_menu(){
 // ------------------------------------------------------------------------
 
  /**
+ * Get Top Bar
+ *
+ * Returns the topba
+ * 
+ * @access  public
+ * @param   no
+ * @return  string
+ * @since   0.1.0
+ * @modify  0.1.0
+ */
+function get_the_top_bar(){
+    $CI =& get_instance();
+    $CI->load->helper(array('url', 'functions'));
+    if (be_logged(FALSE) == TRUE):
+        echo '<nav class="top-bar docs-bar" data-topbar="" role="navigation">';
+            echo '<ul class="title-area">';
+                echo '<li class="name">';
+                    echo '<h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>';
+                echo '</li>';
+                echo '<li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>';
+            echo '</ul>';
+            echo '<section class="top-bar-section">';
+                echo '<ul id="top-bar-user" class="right">';
+                    echo '<li class="has-dropdown">';
+                        $iduserbe = (get_session('user_id')) ? get_session('user_id') : '0';
+                        $infouser = $CI->users->get_by_id($iduserbe)->row();
+                        echo '<a href="#">Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="'.avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE).'" /></a>';
+                        echo '<ul class="dropdown">';
+                            echo '<li id="img-profile"><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">';
+                                echo '<img id="top-bar-img-user-large" src="'.avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE).'" /></a>';
+                            echo '</li>';
+                            echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">Rodrigo Sousa</a></li>';
+                            echo '<li><a href="'.base_url('users/update/'.$infouser->user_id.'').'">Editar meu perfil</a></li>';
+                            echo '<li><a href="'.base_url('login/logoff').'">Sair</a></li>';
+                        echo '</ul>';
+                    echo '</li>';
+                echo '</ul>';
+                echo '<ul class="left">';
+                    echo '<li class="has-dropdown">';
+                        echo '<a href="#">'.get_setting('general_title_system').'</a>';
+                        echo '<ul class="dropdown">';
+                            echo '<li><a href="'.base_url().'">Visitar página inicial</a></li>';
+                            echo '<li><a href="'.base_url('dashboard').'">Dashboard</a></li>';
+                            echo '<li><a href="'.base_url('dashboard/info').'">Informações do sistema</a></li>';
+                        echo '</ul>';
+                    echo '</li>';
+                echo '</ul>';
+            echo '</section>';
+        echo '</nav>';
+    else:
+        echo '<nav class="top-bar docs-bar" data-topbar="" role="navigation">';
+            echo '<ul class="title-area">';
+                echo '<li class="name">';
+                    echo '<h1><a href="'.base_url().'"><i class="fa fa-compass"></i><span>Compass</span></a></h1>';
+                echo '</li>';
+            echo '</ul>';
+            echo '<section class="top-bar-section">';
+                echo '<ul class="right">';
+                    if (get_setting('general_open_signup') == 1):
+                        echo '<li><a href="'.base_url('login/signup').'">'.lang('login_signup').'</a></li>';
+                    endif;
+                    echo '<li><a href="'.base_url('login').'">Acessar</a></li>';
+                echo '</ul>';
+                echo '<ul class="left">';
+                    echo '<li><a href="#">'.get_setting('general_title_system').'</a></li>';
+                echo '</ul>';
+            echo '</section>';
+        echo '</nav>';
+    endif;
+}
+
+// ------------------------------------------------------------------------
+
+ /**
  * Ger Url
  *
  * Returns the the class and method to the url cração identifiers pages.

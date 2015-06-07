@@ -143,7 +143,7 @@ class Login extends CI_Controller {
             endif;
         endif;
         //mount the page layout
-        load_template('titulo', load_module('login_view', 'login'), 'base_template_view');
+        load_template(lang('login'), load_module('login_view', 'login'), 'base_template_view');
     }
 
     // --------------------------------------------------------------------
@@ -204,7 +204,7 @@ class Login extends CI_Controller {
         //if you are logged redirects to the dashboard
         if (be_logged(FALSE)) redirect('dashboard');
         //the registration of new users have not enabled, redirects to the login page
-        if (get_setting('users_member_site') != 1):
+        if (get_setting('general_open_signup') != 1):
             set_msg('errorlogin', lang('login_signup_not'), 'error');
             redirect('login');
         endif;
@@ -218,22 +218,19 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('user_pass2', strtoupper(lang('login_field_pass_repeat')), 'trim|required|matches[user_pass]');
         $this->form_validation->set_message('required', lang('core_msg_required'));
         $this->form_validation->set_message('valid_email', lang('core_msg_email'));
-        $this->form_validation->set_message('min_length', lang('login_msg_min_length'));
+        $this->form_validation->set_message('min_length', lang('core_msg_length'));
         $this->form_validation->set_message('is_unique', lang('core_msg_unique'));
         $this->form_validation->set_message('matches', lang('core_msg_matches'));
         //save data
         if ($this->form_validation->run() == TRUE):
-            $data = elements(array('user_name', 'user_displayname', 'user_email', 'user_adress', 'user_url', 'user_doc'), $this->input->post());
+            $data = elements(array('user_username', 'user_name', 'user_displayname', 'user_email'), $this->input->post());
             $data['user_pass'] = md5($this->input->post('user_pass'));
             $data['user_level'] = 5;
             $data['user_status'] = 1;
             $this->users->do_insert($data);
         endif;
         //mount the page layout
-        set_theme('title', lang('login_signup'));
-        set_theme('content', load_module('login_view', 'signup'));
-        set_theme('template', 'template_view');
-        load_template();
+        load_template(lang('login_signup'), load_module('login_view', 'signup'), 'base_template_view');
     }
 
     // --------------------------------------------------------------------
@@ -261,7 +258,7 @@ class Login extends CI_Controller {
             $query = $this->users->get_by_email($email);
             if($query->num_rows()==1):
                 $new_password = substr(str_shuffle('qwertyuiopasdfghjklzxcvbnm123456789'), 0, 6);
-                $mensage = "<p>".lang('login_newpassword_email_p_1')." <strong>$new_password</strong></p><p>".lang('login_newpassword_email_p_2')."</p>";
+                $mensage = "<p>".lang('login_newpassword_email_p_1')." <strong>$new_password</strong> </p><p>".lang('login_newpassword_email_p_2')."</p>";
                 if ($this->system->send_email($email, lang('login_newpassword_email_title'), $mensage)):
                     $data['user_pass'] = md5($new_password);
                     $this->users->do_update($data, array('user_email'=>$email), FALSE);
@@ -277,8 +274,7 @@ class Login extends CI_Controller {
                 redirect('login/newpassword');
             endif;
         endif;
-
-        load_template('titulo', load_module('login_view', 'newpassword'), 'template_view');
+        load_template(lang('login_newpassword'), load_module('login_view', 'newpassword'), 'base_template_view');
     }
 
    

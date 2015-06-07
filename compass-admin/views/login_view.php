@@ -2,21 +2,7 @@
 
 switch ($screen) {
 	case 'login':
-        echo '<nav class="top-bar docs-bar" data-topbar="" role="navigation">';
-            echo '<ul class="title-area">';
-                echo '<li class="name">';
-                    echo '<h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>';
-                echo '</li>';
-            echo '</ul>';
-            echo '<section class="top-bar-section">';
-                echo '<ul class="right">';
-                    echo '<li><a href="'.base_url('login').'">Acessar</a></li>';
-                echo '</ul>';
-                echo '<ul class="left">';
-                    echo '<li><a href="">'.get_setting('general_title_system').'</a></li>';
-                echo '</ul>';
-            echo '</section>';
-        echo '</nav>';
+        get_the_top_bar();
         echo '<div id="login-index" class="row">';
             echo '<br><br><br><br><br>';
             echo '<div class="small-8 large-3 small-centered columns">';
@@ -48,7 +34,9 @@ switch ($screen) {
         break;
 
     case 'signup':
+        get_the_top_bar();
         echo '<div id="login-signup" class="row">';
+            echo '<br>';
             echo '<div class="small-10 large-7 small-centered columns">';
                 errors_validating();
                 get_msg('msgok');
@@ -93,15 +81,16 @@ switch ($screen) {
         echo '</div>';
         break;
     case 'newpassword':
+        get_the_top_bar();
         echo '<div id="login-newpassword" class="row">';
             echo '<br><br><br><br><br>';
-            echo '<div class="small-10 large-4 small-centered columns">';
+            echo '<div class="small-10 large-5 small-centered columns">';
                 errors_validating();
                 get_msg('msgok');
                 get_msg('msgerror');
                 echo '<div class="login-sigall panel white">';
                     echo '<h3>'.lang('login_newpassword_title_box').'</h3> <p>'.lang('login_newpassword_p_box').'</p>';
-                    echo form_open('login/newpassword', 'id="login-newpassword-form-newpassword');
+                    echo form_open('login/newpassword', 'id="login-newpassword-form-newpassword"');
                         echo form_input(array('name'=>'user_email', 'placeholder'=>lang('login_field_email')), set_value('user_email'), 'autofocus');
                         echo form_submit(array('name'=>'save', 'class'=>'button radius tiny'), lang('core_send'));
                     echo form_close();

@@ -18,43 +18,7 @@ echo '<body>';
 ?>
 <div class="off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
-        <nav class="top-bar docs-bar" data-topbar="" role="navigation">
-            <ul class="title-area">
-                <li class="name">
-                    <h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>
-                </li>
-                <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
-            </ul>
-            <section class="top-bar-section">
-                <ul id="top-bar-user" class="right">
-                    <li class="has-dropdown">
-                        <?php
-                        $iduserbe = (get_session('user_id')) ? get_session('user_id') : '0';
-                        $infouser = $this->users->get_by_id($iduserbe)->row();
-                        ?>
-                        <a href="#">Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
-                        <ul class="dropdown">
-                            <li id="img-profile"><a href="<?php echo base_url('users/profile/'.$infouser->user_id.'') ?>">
-                                <img id="top-bar-img-user-large" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
-                            </li>
-                            <li><a href="<?php echo base_url('users/profile/'.$infouser->user_id.'') ?>">Rodrigo Sousa</a></li>
-                            <li><a href="<?php echo base_url('users/update/'.$infouser->user_id.'') ?>">Editar meu perfil</a></li>
-                            <li><a href="<?php echo base_url('login/logoff'); ?>">Sair</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="left">
-                    <li class="has-dropdown">
-                        <a href="#"><?php print get_setting('general_title_system'); ?></a>
-                        <ul class="dropdown">
-                            <li><a href="<?php echo base_url(); ?>">Visitar página inicial</a></li>
-                            <li><a href="<?php echo base_url('dashboard'); ?>">Dashboard</a></li>
-                            <li><a href="<?php echo base_url('dashboard/info'); ?>">Informações do sistema</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-        </nav>
+        <?php get_the_top_bar(); ?>
 
         <aside class="left-off-canvas-menu">
             <ul class="off-canvas-list">
