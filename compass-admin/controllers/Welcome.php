@@ -1,25 +1,34 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Welcome class
+ *
+ * Controller f oviewing the homepage of the System
+ *
+ * Maps to the following URL
+ * 		http://yoursite.com/welcome
+ *
+ * @package		Compass
+ * @subpackage	Core
+ * @copyright	Copyright (c) 2014, Compass, Inc.
+ * @author		Francisco Rodrigo Cunha de Sousa
+ * @link		http://rodrigosousa.info
+ * @since       0.0.0
+ */
 class Welcome extends CI_Controller {
-
 	/**
-	 * Index Page for this controller.
+	 * The default page
 	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
+	 * Page home of system
+	 * Allows redirecting of homepage of the system.
 	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 * @access     public
+	 * @since      0.0.0
+	 * @modify     0.0.0
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+	public function index(){
+		//loads utilities
+		$this->load->helper(array('functions', 'url'));
+		//redirect
+		redirect('login');
 	}
 }
