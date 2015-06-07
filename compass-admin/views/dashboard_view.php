@@ -4,7 +4,7 @@ switch ($screen) {
     case 'dashboard':
         echo '<div class="row" id="dashboard-index">';
             echo '<div class="small-12 columns">';
-                echo '<div class="panel white">conteúdo</div>';
+                echo 'conteúdo';
             echo '</div>';
         echo '</div>';
         break;

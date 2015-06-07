@@ -15,183 +15,84 @@ echo '<head>';
     echo '<style type="text/css">'.$style.get_css_theme().'</style>';
 echo '</head>';
 echo '<body>';
-//make the menus of modules
-echo '<div class="off-canvas-wrap docs-wrap" id="container" data-offcanvas>';
-    echo '<div class="inner-wrap" id="content">';
-        //Aside Menu left for small screen and medium screen
-        if (be_logged(FALSE) == TRUE):
-            echo '<aside class="left-off-canvas-menu hide-for-large">';
-                get_the_menu();
-            echo '</aside>';
-        endif;
-        //Aside Menu right for small screen and medium screen
-        if (be_logged(FALSE) == TRUE):
-            echo '<aside class="right-off-canvas-menu hide-for-large">';
-                echo '<ul class="off-canvas-list">';
-                    echo '{submenu}';
-                    echo '<span class="show-for-small">';
+?>
+<div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+        <nav class="top-bar docs-bar" data-topbar="" role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="<?php echo base_url(); ?>"><i class="fa fa-compass"></i><span>Compass</span></a></h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <ul id="top-bar-user" class="right">
+                    <li class="has-dropdown">
+                        <?php
                         $iduserbe = (get_session('user_id')) ? get_session('user_id') : '0';
                         $infouser = $this->users->get_by_id($iduserbe)->row();
-                        echo '<li><br></li>';
-                        echo '<li><label>'.$infouser->user_displayname.'</label></li>';
-                        echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">'.avatar(get_usermeta('user_image', get_session('user_id')), 150, 150).'</a></li>';
-                        echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">'.lang('core_view_profile').'</a></li>';
-                        echo '<li><a href="'.base_url('users/update/'.$infouser->user_id.'').'">'.lang('core_update_profile').'</a></li>';
-                        echo '<li><a href="'.base_url('login/logoff').'">'.lang('core_logoff').'</a></li>';
-                    echo '</span>';
-                echo '</ul>';
-            echo '</aside>';
-        endif;
-        //Topbar for small screen
-        echo '<nav class="tab-bar show-for-small">';
-            echo '<section class="right tab-bar-section">';
-                echo '<h1 class="title-top"><i class="fa fa-compass" style="font-size:25px;"></i> {title_default}</h1>';
-            echo '</section>';
-            echo '<section class="left-small">';
-                echo '<a class="left-off-canvas-toggle menu-icon" title="'.lang('core_menu').'" ><span></span></a>';
-            echo '</section>';
-            echo '<section class="right-small">';
-                echo '<a class="right-off-canvas-toggle menu-icon" title="'.lang('tools').'"><span></span></a>';
-            echo '</section>';
-        echo '</nav>';
-        //Topbar for medium screen and large screen
-        echo '<nav class="top-bar hide-for-small" data-topbar data-options="is_hover: false">';
-            echo '<section class="top-bar-section">';
-                echo '<ul class="title-area">';
-                    echo '<h1 class="title-top hide-for-small"><span class="hide-for-large left title-top-space"></span><i class="fa fa-compass" style="font-size:25px; text-align:center;"></i> {title_default}</h1>';
-                echo '</ul>';
-                if (be_logged(FALSE) == TRUE):
-                    echo '<ul class="left hide-for-medium">{submenu}</ul>';
-                endif;
-                echo '<ul class="right">';
-                    //Menu user profile
-                    if (be_logged(FALSE) == TRUE):
-                        $infouser = $this->users->get_by_id(get_session('user_id'))->row();
-                    endif;
-                    if (be_logged(FALSE) == FALSE):
-                        echo '<li><a href="'.base_url('login').'">'.lang('core_login').'</a></li>';
-                    else:
-                        if (get_access('perm_comments_') == TRUE && get_setting('module_cms') == 1 && get_setting('module_install_cms') == 1):
-                            echo '<li><a href="'.base_url('cms/posts/comments').'"><i class="fa fa-comment"></i>'.count_comments_unmoderated().'</a></li>';
-                        endif;
-                        echo '<li class="has-dropdown no-arrow-li" data-options="is_hover: true"><a href="#"><i class="fa fa-info help-b"></i></a>';
-                            echo '<ul class="dropdown drop-help-top-bar">';
-                                echo '<li>';
-                                    echo '<div class="">';
-                                        echo '<div tabindex="0" class="nano-content">';
-                                            echo '<p>{helper}</p>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                echo '</li>';
-                            echo '</ul>';
-                        echo '</li>';
-                        echo '<li class="has-dropdown no-arrow-li" data-options="is_hover: true"><a href="#"><i class="fa fa-cog"></i></a>';
-                            echo '<ul class="dropdown drop-setting-top-bar">';
-                                echo '<li>';
-                                    echo '<div tabindex="0" class="nano-content">';
-                                        echo '<div tabindex="0" class="color-box">';
-                                            echo anchor('settings/options/color/pink/'.$this->uri->uri_string(current_url()), ' ', 'class="color-pink" title="'.lang('core_color_pink').'"');
-                                            echo anchor('settings/options/color/red-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-red-light" title="'.lang('core_color_red_dark').'"');
-                                            echo anchor('settings/options/color/red-light/'.$this->uri->uri_string(current_url()), ' ', 'class="color-red-light" title="'.lang('core_color_red_light').'"');
-                                            echo anchor('settings/options/color/orange/'.$this->uri->uri_string(current_url()), ' ', 'class="color-orange" title="'.lang('core_color_orange').'"');
-                                            echo anchor('settings/options/color/green-light/'.$this->uri->uri_string(current_url()), ' ', 'class="color-green-light" title="'.lang('core_color_green_light').'"');
-                                            echo anchor('settings/options/color/green-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-green-dark" title="'.lang('core_color_green_dark').'"');
-                                            echo anchor('settings/options/color/teal-light/'.$this->uri->uri_string(current_url()), ' ', 'class="color-teal-light" title="'.lang('core_color_teal_light').'"');
-                                            echo anchor('settings/options/color/teal-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-teal-dark" title="'.lang('core_color_teal_dark').'"');
-                                            echo anchor('settings/options/color/blue-light/'.$this->uri->uri_string(current_url()), ' ', 'class="color-blue-light" title="'.lang('core_color_blue_light').'"');
-                                            echo anchor('settings/options/color/blue/'.$this->uri->uri_string(current_url()), ' ', 'class="color-blue" title="'.lang('core_color_blue').'"');
-                                            echo anchor('settings/options/color/purple-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-purple-dark" title="'.lang('core_color_purple_dark').'"');
-                                            echo anchor('settings/options/color/purple/'.$this->uri->uri_string(current_url()), ' ', 'class="color-purple" title="'.lang('core_color_purple').'"');
-                                            echo anchor('settings/options/color/blue-medium/'.$this->uri->uri_string(current_url()), ' ', 'class="color-blue-medium" title="'.lang('core_color_blue_medium').'"');
-                                            echo anchor('settings/options/color/blue-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-blue-dark" title="'.lang('core_color_blue_dark').'"');
-                                            echo anchor('settings/options/color/brown/'.$this->uri->uri_string(current_url()), ' ', 'class="color-brown" title="'.lang('core_color_brown').'"');
-                                            echo anchor('settings/options/color/brown-dark/'.$this->uri->uri_string(current_url()), ' ', 'class="color-brown-dark" title="'.lang('core_color_brown_dark').'"');
-                                            echo anchor('settings/options/color/grey/'.$this->uri->uri_string(current_url()), ' ', 'class="color-grey" title="'.lang('core_color_grey').'"');
-                                            echo anchor('settings/options/color/black/'.$this->uri->uri_string(current_url()), ' ', 'class="color-black" title="'.lang('core_color_black').'"');
-                                            echo '<div class="clear"></div>';
-                                            echo '<hr/>';
-                                            echo '<div class="row">';
-                                            echo form_label(lang('core_language').':');
-                                            $languages = (directory_map('./compass-admin/language', TRUE));
-                                            $options = array();
-                                            $options[] = '← '.ucfirst(get_session('system_language'));
-                                            foreach ($languages as $lang):
-                                                $options[base_url('settings/options/language/').'/'.$lang] = ucfirst($lang);
-                                            endforeach;
-                                            echo form_dropdown('language', $options, get_session('system_language'), 'onChange="if(this.selectedIndex!=0)self.location=this.options[this.selectedIndex].value"');
-                                            echo '</div>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                echo '</li>';
-                            echo '</ul>';
-                        echo '</li>';
-                        echo '<li class="has-dropdown no-arrow-li"><a href="#">'.$infouser->user_displayname.' '.avatar(get_usermeta('user_image', get_session('user_id')), 30, 30).'</a>';
-                            echo '<ul class="dropdown drop-profile-top-bar">';
-                                    echo '<div class="left">';
-                                        echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">'.avatar(get_usermeta('user_image', get_session('user_id')), 150, 150).'</a></li>';
-                                    echo '</div>';
-                                    echo '<div class="right">';
-                                        echo '<li><a href="'.base_url('users/profile/'.$infouser->user_id.'').'">'.lang('core_view_profile').'</a></li>';
-                                        echo '<li><a href="'.base_url('users/update/'.$infouser->user_id.'').'">'.lang('core_update_profile').'</a></li>';
-                                        echo '<li><a href="'.base_url('login/logoff').'">'.lang('core_logoff').'</a></li>';
-                                    echo '</div>';
-                            echo '</ul>';
-                        echo '</li>';
-                        echo '<li><span class="hide-for-large right title-top-space"></span></li>';
-                    endif;
-                echo '</ul>';
-            echo '</section>';
-        echo '</nav>';
-        //Left canvas link and right canvas link for small screen and medium screen
-        if (be_logged(FALSE) == TRUE):
-            echo '<div class="tab-bar show-for-medium">';
-                echo '<section class="left-small left-medium hide-for-large">';
-                    echo '<a class="left-off-canvas-toggle menu-icon" title="'.lang('core_menu').'" ><span></span></a>';
-                echo '</section>';
-                echo '<section class="right-small right-medium hide-for-large">';
-                    echo '<a class="right-off-canvas-toggle menu-icon" title="'.lang('tools').'"><span></span></a>';
-                echo '</section>';
-            echo '</div>';
-        endif;
-        //Content area
-        echo '<section class="main-section page-'.get_url_class('class').' page-'.get_url_class('method').'">';
-            echo '<div class="row">';
-                if (be_logged(FALSE) == TRUE):
-                    //menu for large
-                    echo '<div class="small-2 large-2 hide-for-small hide-for-medium columns large-content-left" id="menu-left-page">';
-                        get_the_menu();
-                    echo '</div>';
-                    //content
-                    echo '<div class="large-10 columns large-content-right" id="content-page">';
-                        echo '<div class="small-12 columns">';
-                            get_msg('msgerror').get_msg('msgok').errors_validating();
-                            echo '{content}';
-                            echo '<br><br>';
-                        echo '</div>';
-                    echo '</div>';
-                else:
-                    //Content for no-logged
-                    echo '<div class="small-12 columns" id="content-page">';
-                        echo '<div class="small-12 columns">';
-                            echo '{content}';
-                            echo '<br><br>';
-                        echo '</div>';
-                    echo '</div>';
-                endif;
-            echo '</div>';
-        echo '</section>';
-        //Footer
-        echo '<footer>';
-            echo '<div class="row">';
-                echo '<div class="small-12 columns">';
-                    echo '<a href="#" class="right" target="_blanc">'.lang('core_copy').'</a>';
-                    echo '<p>{footer}</p>';
-                echo '</div>';
-            echo '</div>';
-        echo '</footer>';
-        echo '<a class="exit-off-canvas"></a>';
-    echo '</div>';
-echo '</div>';
+                        ?>
+                        <a>Olá, Rodrigo Sousa <img id="top-bar-img-user-small" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
+                        <ul class="dropdown">
+                            <li id="img-profile"><a href="<?php echo base_url('users/profile/'.$infouser->user_id.'') ?>">
+                                <img id="top-bar-img-user-large" src="<?php echo avatar(get_usermeta('user_image', get_session('user_id')), 160, 160, FALSE); ?>" /></a>
+                            </li>
+                            <li><a href="<?php echo base_url('users/profile/'.$infouser->user_id.'') ?>">Rodrigo Sousa</a></li>
+                            <li><a href="<?php echo base_url('users/update/'.$infouser->user_id.'') ?>">Editar meu perfil</a></li>
+                            <li><a href="<?php echo base_url('login/logoff'); ?>">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="left">
+                    <li class="has-dropdown">
+                        <a href=""><?php print get_setting('general_title_system'); ?></a>
+                        <ul class="dropdown">
+                            <li><a href="<?php echo base_url(); ?>">Visitar página inicial</a></li>
+                            <li><a href="<?php echo base_url('dashboard'); ?>">Dashboard</a></li>
+                            <li><a href="<?php echo base_url('dashboard/info'); ?>">Informações do sistema</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label>Foundation</label></li>
+                <li><a href="#">The Psychohistorians</a></li>
+                <li><a href="#">...</a></li>
+            </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label>Users</label></li>
+                <li><a href="#">Hari Seldon</a></li>
+                <li><a href="#">...</a></li>
+            </ul>
+        </aside>
+
+        <section class="main-section">
+            <div class="row">
+                <div id="menu" class="show-for-large large-2 columns">
+                    <?php get_the_menu(); ?>
+                </div>
+                <div id="content" class="large-10 columns">
+                    {content}
+                </div>
+            </div>
+            <div id="footer" class="small-12 columns">
+                <div class="row">
+                    Orgulhosamente produzido com <a href="https://github.com/ProjectCompass/Compass">Compass</a>!
+                </div>
+            </div>
+        </section>
+
+        <a class="exit-off-canvas"></a>
+
+    </div>
+</div>
+<?php
 echo '{footerinc}';
 echo '</body>';
 echo '</html>';

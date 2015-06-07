@@ -35,14 +35,14 @@ function initialize_dashboard(){
     $CI->load->model('usermeta_model', 'usermeta');
     //property standards as the title of the panel and roapé (are automatically entered in the system settings)
     set_theme('theme', 'default');
-    set_theme('title_default', get_setting('general_title_site'));
+    set_theme('title_default', get_setting('general_title_system'));
     set_theme('footer', get_setting('aparence_copy_footer'));
     set_theme('template', 'template_view');
     set_theme('submenu', '');
     //loading css in header
     set_theme('headerinc', load_css(array('normalize', 'style', 'foundation.min', 'app', 'font-awesome/css/font-awesome.min')), FALSE);
     //loading js in footer
-    set_theme('headerinc', load_js(array('modernizr', 'jquery-1.11.3.min')), FALSE);
+    set_theme('headerinc', load_js(array('jquery-1.11.3.min')), FALSE);
     set_theme('footerinc', load_js(array('foundation.min', 'app')), FALSE);
 }
 
@@ -452,13 +452,6 @@ function get_the_menu(){
         make_menu('menu_item', '<i class="fa fa-home"></i>'.lang('dashboard'), 'dashboard').
         make_menu('menu_space')
     ;
-    $themes_directorys = directory_map('./compass-admin/modules/', TRUE);
-    if (in_array('index.html', $themes_directorys)) unset($themes_directorys[array_search('index.html',$themes_directorys)]);
-    foreach ($themes_directorys as $name_theme_directory):
-        if (in_array($name_theme_directory.'_view.php', directory_map('./compass-admin/modules/'.$name_theme_directory.'/views/', TRUE))):
-            echo load_module($name_theme_directory.'/'.$name_theme_directory.'_view', 'menu');
-        endif;
-    endforeach;
     echo 
         make_menu('menu_item', '<i class="fa fa-user"></i>'.lang('users'), 'users', '', 'perm_listusers_').
         make_menu('menu_subitem', '<i class="fa da"></i>'.lang('core_list_all'), 'users', 'index', 'perm_listusers_').

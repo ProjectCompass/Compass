@@ -367,7 +367,10 @@ function avatar($image=NULL, $width=100, $height=75, $geratag=TRUE){
             $return = '<img src="'.$return.'" alt="" />';
         endif;
     else:
-        $return = '<img src="'.base_url().'compass-content/includes/images/avatar.png" alt="" width="'.$width.'" height="'.$height.'" />';
+        $return = base_url().'compass-content/includes/images/avatar.png';
+        if ($geratag && $return != FALSE):
+            $return = '<img src="'.base_url().'compass-content/includes/images/avatar.png" width="'.$width.'" height="'.$height.'" />';
+        endif;
     endif;
     return $return;
 }

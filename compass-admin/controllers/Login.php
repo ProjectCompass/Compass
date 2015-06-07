@@ -143,7 +143,7 @@ class Login extends CI_Controller {
             endif;
         endif;
         //mount the page layout
-        load_template('titulo', load_module('login_view', 'login'), 'template_view');
+        load_template('titulo', load_module('login_view', 'login'));
     }
 
     // --------------------------------------------------------------------

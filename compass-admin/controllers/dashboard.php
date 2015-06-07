@@ -38,9 +38,6 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index(){
 		//mount the page layout
-		set_theme('title', lang('dashboard'));
-		set_theme('content', load_module('dashboard_view', 'dashboard'));
-		load_template();
-
+		load_template(lang('dashboard'), load_module('dashboard_view', 'dashboard'), 'template_view');
 	}
 }
