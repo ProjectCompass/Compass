@@ -33,6 +33,7 @@ function initialize_dashboard(){
     $CI->load->helper(array('form', 'url', 'array', 'text', 'paging'));
     $CI->load->model('users_model', 'users');
     $CI->load->model('usermeta_model', 'usermeta');
+    $CI->load->model('terms_model', 'terms');
     //property standards as the title of the panel and roapé (are automatically entered in the system settings)
     set_theme('theme', 'default');
     set_theme('title_default', get_setting('general_title_system'));
@@ -40,10 +41,10 @@ function initialize_dashboard(){
     set_theme('template', 'template_view');
     set_theme('submenu', '');
     //loading css in header
-    set_theme('headerinc', load_css(array('normalize', 'style', 'foundation.min', 'app', 'font-awesome/css/font-awesome.min')), FALSE);
+    set_theme('headerinc', load_css(array('style', 'foundation.min', 'app', 'font-awesome/css/font-awesome.min')), FALSE);
     //loading js in footer
-    set_theme('headerinc', load_js(array('jquery-1.11.3.min')), FALSE);
-    set_theme('footerinc', load_js(array('foundation.min', 'app')), FALSE);
+    set_theme('headerinc', load_js(array('modernizr')), FALSE);
+    set_theme('footerinc', load_js(array('jquery', 'foundation.min')), FALSE);
 }
 
 // ------------------------------------------------------------------------

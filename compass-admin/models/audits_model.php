@@ -68,6 +68,3 @@ class Audits_model extends CI_Model {
         return $this->db->get('audits');
     }
 }
-
-/* End of file audits_model.php */
-/* Location: ./include/models/audits_model.php */

@@ -39,6 +39,7 @@ echo '<body>';
                     <?php get_the_menu(); ?>
                 </div>
                 <div id="content" class="large-10 columns">
+                    <?php get_msg('msgerror').get_msg('msgok').errors_validating(); ?>
                     {content}
                 </div>
             </div>
@@ -56,5 +57,10 @@ echo '<body>';
         
 <?php
 echo '{footerinc}';
+?>
+    <script>
+      $(document).foundation();
+    </script>
+<?php
 echo '</body>';
 echo '</html>';

@@ -12,7 +12,7 @@ switch ($screen) {
         echo '<div id="users-index" class="row">';
             echo '<div class="small-8 columns">';
                 echo '<h3 class="left">'.lang('users').'</h3>';
-                echo anchor('users/insert', lang('core_insert_new'), 'class="addimg button button-tiny secondary radius space-v-medium space-h-small"');
+                echo anchor('users/insert', lang('core_insert_new'), 'class="button tiny radius button-h"');
             echo '</div>';
             echo '<div class="small-4 columns">';
                 echo form_open(current_url(), 'id="users-index-form-search"');
@@ -142,7 +142,7 @@ switch ($screen) {
     case 'insert':
         echo '<div id="users-insert" class="row">';
             echo '<div class="small-12 medium-10 large-8 columns">';
-                echo '<h3>Cadastrar novo usuário</h3>';
+                echo '<h3>'.lang('users_insert').'</h3>';
                 echo form_open('users/insert', 'id="users-insert-form-insert"');
                     echo form_label(lang('users_field_user_name'));
                     echo form_input(array('name'=>'user_username', 'placeholder'=>lang('users_field_user_name')), set_value('user_username'), 'autofocus');

@@ -128,10 +128,10 @@ class Users extends CI_Controller {
 		//access permission
 		access('perm_insertusers_');
 		//data validation
-        $this->form_validation->set_rules('user_username', strtoupper(lang('users_field_user_name')), 'trim|required|min_length[6]|is_unique[rs_users.user_username]|strtolower');
+        $this->form_validation->set_rules('user_username', strtoupper(lang('users_field_user_name')), 'trim|required|min_length[6]|is_unique[users.user_username]|strtolower');
         $this->form_validation->set_rules('user_name', strtoupper(lang('users_field_name')), 'trim|required');
         $this->form_validation->set_rules('user_displayname', strtoupper(lang('users_field_display_name')), 'trim');
-        $this->form_validation->set_rules('user_email', strtoupper(lang('users_field_email')), 'trim|required|valid_email|is_unique[rs_users.user_email]|strtolower');
+        $this->form_validation->set_rules('user_email', strtoupper(lang('users_field_email')), 'trim|required|valid_email|is_unique[users.user_email]|strtolower');
         $this->form_validation->set_rules('user_email2', strtoupper(lang('users_field_email_repeat')), 'trim|required|valid_email|matches[user_email]|strtolower');
         $this->form_validation->set_rules('user_pass', strtoupper(lang('users_field_pass')), 'trim|required|min_length[6]');
         $this->form_validation->set_rules('user_pass2', strtoupper(lang('users_field_pass_repeat')), 'trim|required|matches[user_pass]');
@@ -169,10 +169,7 @@ class Users extends CI_Controller {
             redirect(current_url());
 		endif;
 		//mount the page layout
-		set_theme('title', lang('users_insert'));
-		set_theme('content', load_module('users_view', 'insert'));
-		set_theme('helper', lang('help_users_insert'));
-		load_template();
+		load_template(lang('users_insert'), load_module('users_view', 'insert'));
 	}
 
 	// --------------------------------------------------------------------
