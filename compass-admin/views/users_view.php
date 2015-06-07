@@ -90,6 +90,7 @@ switch ($screen) {
                 get_pagination($config);
             echo '</div>';
         echo '</div>';
+        echo '<script type="text/javascript">window.onload = function(){$(".deletereg").click(function(){if (confirm("'.lang('core_confirm_delete').'")) return true; else return false;});};</script>';
             break;
     case 'profile':
         $iduser = $this->uri->segment(3);
