@@ -9,87 +9,40 @@ switch ($screen) {
         ;
         break;
     case 'users':
-        echo '<div id="users-index" class="row">';
-            echo '<div class="small-8 columns">';
-                echo '<h3 class="left">'.lang('users').'</h3>';
-                echo anchor('users/insert', lang('core_insert_new'), 'class="button tiny radius button-h"');
-            echo '</div>';
-            echo '<div class="small-4 columns">';
-                echo form_open(current_url(), 'id="users-index-form-search"');
-                    echo '<div class="row">';
-                        echo '<div class="row collapse">';
-                            echo '<div class="small-7 columns">';
-                                echo form_input(array('name'=>'search_for', 'placeholder'=>lang('core_search')), set_value('search', ($this->uri->segment($config['filter_key_segment']) == 'search') ? $this->uri->segment($config['filter_value_segment']) : NULL));
-                            echo '</div>';
-                            echo '<div class="small-5 columns">';
-                                echo form_submit(array('name'=>'search', 'class'=>'small-11 button secondary tiny', 'title'=>lang('users_search')), lang('users_search'));
-                            echo '</div>';
-                        echo '</div>';
-                    echo '</div>';
-                echo form_close();
-            echo '</div>';
-        echo '</div>';
-        echo '<div class="row">';
-            echo '<div class="small-12 columns links-filters">';
-                $link_filter_current = ($this->uri->segment($config['filter_value_segment']) == NULL) ? 'link-filter-current' : NULL;
-                echo "<a class='link-filter-first ".$link_filter_current."' href='".$config['pagination_url']."'>".lang('users_all')."</a>";
-                $query_userlevel = $this->userslevels->get_all()->result();
-                foreach ($query_userlevel as $line):
-                    $this->db->where('user_level', $line->userlevel_id);
-                    $count_users_bylevel = $this->users->get_all()->num_rows();
-                    if ($count_users_bylevel > 0):
-                        $link_filter_current = ($this->uri->segment($config['filter_key_segment']) == 'filter_level' && $this->uri->segment($config['filter_value_segment']) == $line->userlevel_id) ? 'link-filter-current' : NULL;
-                        echo "<a class='".$link_filter_current."' href='".$config['pagination_url'].'/0/orderby/'.$config['default_orderby'].'/order/'.$config['default_order']."/filter_level/$line->userlevel_id"."'>$line->userlevel_name ($count_users_bylevel)</a>";
-                    endif;
-                endforeach;
-            echo '</div>';
-        echo '</div>';
-        echo '<table id="users-index-table-list" class="columns">';
-            echo '<thead>';
-                echo '<tr class="table-order">';
-                    echo '<th class="small-4 collums">'.get_th_orderby(lang('users_field_user_name'), 'user_username', $config).'</th>';
-                    echo '<th class="small-3 collums">'.get_th_orderby(lang('users_field_name'), 'user_name', $config).'</th>';
-                    echo '<th class="small-3 collums">'.get_th_orderby(lang('users_field_email'), 'user_email', $config).'</th>';
-                    echo '<th class="small-2 collums">'.lang('users_levels').'</th>';
-                echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
-                $query_numrows = 0;
-                foreach (get_query($config)->result() as $line):
-                    if ($line->user_status != 9):
-                        $query_userlevel = $this->userslevels->get_by_id($line->user_level)->row();
-                        echo '<tr>';
-                            echo '<td class="table-operations"> ', avatar(get_usermeta("user_image", $line->user_id), 40, 40);
-                            printf("<strong>%s</strong><br>%s %s</td>",
-                                (access('perm_viewprofileusers_', NULL, TRUE)) ? anchor("users/profile/$line->user_id", $line->user_username, array('class'=>'table-item-featured', 'title'=>lang('core_profile'))) : $line->user_username, 
-                                (access('perm_updateusers_', 'high', TRUE, $this->users->get_by_id($line->user_id)->row()->user_level, $this->users->get_by_id($line->user_id)->row()->user_username)) ? anchor("users/update/$line->user_id", lang('core_update'), array('class'=>'table-action table-action-first update', 'title'=>lang('core_update'))) : NULL, 
-                                (access('perm_userdelete_', 'high', TRUE, $this->users->get_by_id($line->user_id)->row()->user_level, $this->users->get_by_id($line->user_id)->row()->user_username)) ? anchor("users/delete/$line->user_id", lang('core_delete'), array('class'=>'table-action delete deletereg', 'title'=>lang('core_delete'))) : NULL);
-                            printf('<td>%s</td>', $line->user_name);
-                            printf('<td>%s</td>', $line->user_email);
-                            printf('<td>%s %s</td>', $query_userlevel->userlevel_name, ($line->user_status==0) ? '(Inativo)' : NULL);
-                        echo '</tr>';
-                        $query_numrows++;
-                    endif;
-                endforeach;
-            echo '</tbody>';
-            echo '<thead>';
-                echo '<tr class="table-order">';
-                    echo '<th class="small-4 collums">'.get_th_orderby(lang('users_field_user_name'), 'user_username', $config).'</th>';
-                    echo '<th class="small-3 collums">'.get_th_orderby(lang('users_field_name'), 'user_name', $config).'</th>';
-                    echo '<th class="small-3 collums">'.get_th_orderby(lang('users_field_email'), 'user_email', $config).'</th>';
-                    echo '<th class="small-2 collums">'.lang('users_levels').'</th>';
-                echo '</tr>';
-            echo '</thead>';
-        echo '</table>';
-        echo '<div class="row">';
-            echo '<div class="small-12 medium-6 large-4 columns">';
-                $rows = get_query($config, 'all')->num_rows();
-                echo "<small>".lang('core_showing')." ".$query_numrows." - $rows ".lang('core_registers')."</small>";
-            echo '</div>';
-            echo '<div class="small-12 medium-6 large-8 columns">';
-                get_pagination($config);
-            echo '</div>';
-        echo '</div>';
+        
+        $table_attributes = array(
+            'type'=>'casa', 
+            'id'=>NULL, 
+            'class'=>NULL, 
+            'thead'=>TRUE,
+            'tfoot'=>TRUE,
+        );
+        //TYPE: simple, block, checkbox
+        $head = array(
+            array('type'=>'order', 'title'=>lang('users_field_user_name'), 'column'=>'user_username', 'class'=>'small-4', 'id'=>''),
+            array('type'=>'order', 'title'=>lang('users_field_name'), 'column'=>'user_name', 'class'=>'small-3', 'id'=>''),
+            array('type'=>'order', 'title'=>lang('users_field_email'), 'column'=>'user_email', 'class'=>'small-3', 'id'=>''),
+            array('type'=>'simple', 'title'=>lang('users_levels'), 'column'=>'', 'class'=>'small-2', 'id'=>''),
+        );
+        $body = array(
+            array(
+                'type'=>'simple', 
+                'title'=>'Título do item', 
+                'column'=>'user_name', 
+                'links'=>array()
+            ),
+            array(
+                'type'=>'simple', 
+                'title'=>'Título do item', 
+                'column'=>'user_email', 
+                'image'=>'tag da imagem a ser exibida', 
+                'link'=>'http://...',
+                'links'=>array()
+            ),
+        );
+        make_table($table_attributes, $head, $body);
+
+        
         echo '<script type="text/javascript">window.onload = function(){$(".deletereg").click(function(){if (confirm("'.lang('core_confirm_delete').'")) return true; else return false;});};</script>';
             break;
     case 'profile':

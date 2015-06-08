@@ -47,6 +47,7 @@ class Users extends CI_Controller {
 	 */
 	public function index(){
 		//variables paging and query
+		$this->load->helper('make_table');
 		$config = array(
 		'model'=>'users',
 		'method'=>'return_list',
